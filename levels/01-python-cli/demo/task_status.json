@@ -1,0 +1,6 @@
+{
+  "task_id": "demo-task-001",
+  "status": "running",
+  "progress": 0.6,
+  "message_text": "正在生成图片"
+}
