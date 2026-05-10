@@ -2,6 +2,20 @@
 
 本仓库是 **Intelligence Space** 的**新人训练仓**（低风险、非生产）。目标是为未来新成员准备**闯关式**学习材料：基础 Demo、教程、练习与验收标准，便于按节奏上手真实项目中的技术栈与协作方式。
 
+## 完全零基础新人先看这里
+
+如果你还不会 Git、Python 或命令行，请先从 **`levels/00-first-click/`** 开始：这一关在浏览器里点开即可，**不需要安装环境**，只需下载 ZIP、解压并双击 `demo/index.html`。建立「任务状态」直觉后，再进入第 01 关学习终端与 Python。
+
+## 课程设计原则
+
+本训练营采用 **「多主线进阶」** 的方式组织内容（前端、后端、模型服务、网络、部署、协作、主项目综合等分线推进，禁止用少数粗阶段一笔带过），在教学形态上仍坚持：
+
+- **前期**：网页卡片 + 小练习，降低门槛（不必第一天 clone）；  
+- **中期**：按技术线分别训练，每关有 **`demo/index.html`**、需要动手时必有 **`practice/starter/START_HERE.html`** 与 **`checklist.md`**；  
+- **后期**：再对齐 Intelligence Space **双仓库架构**、模型接入与 **Agent 协作**。
+
+详细规范与主线地图见：[`docs/00-overview/COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md)。
+
 ## 学什么
 
 通过逐级 Demo 覆盖：
@@ -19,9 +33,10 @@
 
 | 路径 | 用途 |
 |------|------|
-| `docs/00-overview/` | 总览、约定、环境说明 |
+| `docs/00-overview/` | 总览、约定、环境说明；含 [`COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) 课程设计规范 |
 | `docs/01-learning-routes/` | 学习路线、关卡顺序与依赖 |
 | `docs/02-project-mapping/` | 与 Intelligence Space 正式仓库/模块的对应关系 |
+| `levels/00-first-click/` | 第 0 关：无需环境，双击网页体验任务状态 |
 | `levels/01-python-cli/` ~ `levels/08-mini-platform/` | 各关 Demo、练习与验收说明（内容将逐步填充） |
 | `templates/` | 关卡或文档模板 |
 | `scripts/` | 本地校验、生成或辅助脚本 |
@@ -30,10 +45,11 @@
 
 ## 如何使用（规划）
 
-1. 阅读 `docs/00-overview/` 中的环境与约定。  
-2. 按 `docs/01-learning-routes/` 中的路线从 Level 01 开始闯关。  
-3. 每关在对应 `levels/xx-.../` 目录完成练习并对照验收标准（随内容发布）。  
-4. 需要对照正式项目时，查阅 `docs/02-project-mapping/`。
+1. **完全零基础：** 先做 `levels/00-first-click/`（ZIP + 双击 HTML），再学 `levels/01-python-cli/`（Python + 终端）。  
+2. 阅读 `docs/00-overview/`（含 [`COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) 课程设计规范）。  
+3. 按 `docs/01-learning-routes/` 中的路线继续闯关。  
+4. 每关在对应 `levels/xx-.../` 目录完成练习并对照验收标准（随内容发布）。  
+5. 需要对照正式项目时，查阅 `docs/02-project-mapping/`。
 
 ## 贡献说明
 
