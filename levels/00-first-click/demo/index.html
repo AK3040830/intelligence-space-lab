@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intelligence Space Lab - 第 00 关</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --card: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #0d9488;
+      --accent-dim: #ccfbf1;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+    h1 { font-size: 1.4rem; margin: 0 0 0.5rem; }
+    .lead { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.95rem; }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 560px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    .concept-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      text-align: left;
+    }
+    .concept-card:hover, .concept-card:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(13, 148, 136, 0.12);
+    }
+    .concept-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+    .concept-card .hint { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    .concept-card .detail {
+      display: none;
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.9rem;
+    }
+    .concept-card.open .detail { display: block; }
+    .concept-card.open { border-color: var(--accent); }
+    .detail p { margin: 0.4rem 0; }
+    .detail .tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: #0f766e;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      margin-top: 0.35rem;
+    }
+    .download-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .download-box h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .note { font-size: 0.88rem; color: var(--muted); margin: 0.75rem 0 0; }
+    .done-box {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .done-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .done-box ul { margin: 0.35rem 0 0; padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Intelligence Space Lab - 第 00 关</h1>
+    <p class="lead">
+      欢迎第一次进入训练营。本关<strong>不教编程</strong>，只帮你认清：<strong>这个 Lab 怎么学</strong>、<strong>文件和网页是什么</strong>、<strong>练习包怎么用</strong>。下面四张卡片都可以点开看说明。
+    </p>
+
+    <div class="grid" id="cards">
+      <button type="button" class="concept-card" data-card="0" aria-expanded="false">
+        <h2>1. 网页卡片教程是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>用浏览器打开的「小课本」，里面有字、有图、有时还有按钮，用来先讲清楚概念。</p>
+          <p><strong>例子：</strong>你现在看的这一页，就是一张卡片式教程的一部分。</p>
+          <p><span class="tag">以后在哪用</span> 几乎每一关都会有一个 <code>demo/index.html</code>，先在这里看懂再动手。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="1" aria-expanded="false">
+        <h2>2. 本地练习包是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>放在你电脑上的一个<strong>小文件夹</strong>，里面有步骤说明和要你改的简单文件。</p>
+          <p><strong>例子：</strong>本关的练习在 <code>practice/starter/</code> 里，里面有 <code>START_HERE.html</code> 和 <code>example-note.txt</code>。</p>
+          <p><span class="tag">以后在哪用</span> 需要动手保存、改文件、以后跑 Python 时，都会先有「练习包」里的网页步骤。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="2" aria-expanded="false">
+        <h2>3. 下载和解压是什么意思？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>「下载」是把网上的压缩包保存到电脑；「解压」是把它变成一个普通文件夹，你才能打开里面的文件。</p>
+          <p><strong>例子：</strong>从 Gitee/GitHub 点「下载 ZIP」，右键选择「解压到当前文件夹」。</p>
+          <p><span class="tag">以后在哪用</span> 拿到整个 Lab 或某一关的练习包时都会用到。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="3" aria-expanded="false">
+        <h2>4. 怎么提交学习成果？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>按负责人要求，通常需要<strong>截图</strong>（证明你打开了页面、完成了练习）再加上<strong>一两句自己的话</strong>。</p>
+          <p><strong>例子：</strong>截一张浏览器全屏，用记事本写一句「我今天学会了打开练习包文件夹」。</p>
+          <p><span class="tag">以后在哪用</span> 每一关的 <code>checklist.md</code> 会写清要交什么。</p>
+        </div>
+      </button>
+    </div>
+
+    <div class="download-box">
+      <h3>下载本关练习包（占位）</h3>
+      <p style="margin: 0 0 0.75rem; font-size: 0.92rem;">
+        正式发布时，可能会提供打包好的 <code>package.zip</code>。现在你可以<strong>不下载</strong>，直接在仓库里打开文件夹：
+        <code>levels/00-first-click/practice/starter/</code>，效果一样。
+      </p>
+      <a class="btn" href="../practice/package.zip" title="正式发布后会有文件">下载本关练习包</a>
+      <p class="note">
+        若点击后提示「找不到文件」是正常的：本仓库<strong>本次未生成</strong> <code>package.zip</code>。请直接打开 <code>practice/starter/START_HERE.html</code> 继续。
+      </p>
+    </div>
+
+    <div class="done-box">
+      <h3>我完成了本关</h3>
+      <p style="margin: 0 0 0.5rem; font-size: 0.92rem;">请按负责人要求提交：</p>
+      <ul>
+        <li>一张<strong>本页面打开状态</strong>的截图；</li>
+        <li>用一句话写：<strong>「我知道练习包是什么」</strong>（用自己的话也可以）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".concept-card").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var open = el.classList.toggle("open");
+        el.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    });
+  </script>
+</body>
+</html>
