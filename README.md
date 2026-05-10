@@ -1,69 +1,95 @@
 # Intelligence Space Lab
 
-本仓库是 **Intelligence Space** 的**新人训练仓**（低风险、非生产）。目标是为未来新成员准备**闯关式**学习材料：基础 Demo、教程、练习与验收标准，便于按节奏上手真实项目中的技术栈与协作方式。
+## 这是什么
 
-## 完全零基础新人先看这里
+**Intelligence Space Lab** 是 **Intelligence Space** 项目的**公开新人训练营仓库**，用于课程、Demo、练习包和低风险教学示例。
 
-如果你还不会 Git、Python 或命令行，请先从 **`levels/00-first-click/`** 开始：这一关在浏览器里点开即可，**不需要安装环境**，只需下载 ZIP、解压并双击 `demo/index.html`。建立「任务状态」直觉后，再进入第 01 关学习终端与 Python。
+**它不是**正式工程仓库，**不包含**生产配置、密钥、私有代码或学生隐私信息。
 
-## 在线训练营入口
+## 立即开始
 
-本仓库已提供静态课程入口：
+**在线训练营入口：**
 
-- **本地打开：** 双击仓库根目录 **`index.html`**（会跳转到课程播放器）或直接双击 **`site/index.html`**
-- **课程播放器：** **`site/index.html`**（左侧学习路径与中间课程卡片，在线练习嵌在对应小节内）
+https://ak3040830.github.io/intelligence-space-lab/
 
-各关 **`practice/package.zip`** 可由 `python scripts/build_practice_packages.py` 生成后配合下载。后续发布 **Gitee Pages** 时，**建议以仓库根目录作为发布目录**，因为播放器会链接到 **`levels/**`** 中的卡片教程、`START_HERE` 与 **`package.zip`**（仅发布 `site/` 子目录时 **`../levels/...`** 可能失效）。详细说明见 [`docs/00-overview/GITEE_PAGES_DEPLOY.md`](docs/00-overview/GITEE_PAGES_DEPLOY.md)。若在 Gitee 文件列表中点击 HTML 只看到源码，请使用 Pages 访问地址或下载 ZIP 后在本地打开。
+若在线页面暂时打不开，可下载仓库 **ZIP**，解压后双击根目录 **`index.html`**（会进入课程播放器）。
 
-## 课程设计原则
+## 如果你是新人
 
-本训练营采用 **「多主线进阶」** 的方式组织内容（前端、后端、模型服务、网络、部署、协作、主项目综合等分线推进，禁止用少数粗阶段一笔带过），在教学形态上仍坚持：
+1. 打开上面的**在线训练营入口**；  
+2. 从**第 00 关**开始；  
+3. 按播放器**左侧路径**逐节学习；  
+4. 需要动手时**下载本关练习包**；  
+5. 完成后按各关 **`checklist.md`** 准备截图或一句话总结。
 
-- **前期**：网页卡片 + 小练习，降低门槛（不必第一天 clone）；  
-- **中期**：按技术线分别训练，每关有 **`demo/index.html`**、需要动手时必有 **`practice/starter/START_HERE.html`** 与 **`checklist.md`**；  
-- **后期**：再对齐 Intelligence Space **双仓库架构**、模型接入与 **Agent 协作**。
+## 如果你是老师 / 负责人
 
-详细规范与主线地图见：[`docs/00-overview/COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md)。
+建议按顺序快速了解全局（约几分钟）：
 
-## 学什么
+1. [在线训练营入口](https://ak3040830.github.io/intelligence-space-lab/) — 新人实际看到什么；  
+2. [`docs/00-overview/COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) — 课程路线与教学形态；  
+3. [`docs/00-overview/PUBLIC_LAB_AGENT_RULES.md`](docs/00-overview/PUBLIC_LAB_AGENT_RULES.md) — 公开仓边界与禁止项；  
+4. **当前已完成关卡：** `levels/00-first-click`、`levels/01-python-cli`（其余关卡见下表「规划中」）。
 
-通过逐级 Demo 覆盖：
+## 如果你是 Agent / 协作者
 
-- **Python** 与命令行工具习惯  
-- **HTTP** 与 `curl` 等调试方式  
-- **JSON API** 的请求/响应与错误处理  
-- **Vue** 前端与 `fetch` 调用后端  
-- **Django** 服务端基础  
-- **WebSocket** 双向通信（本 Lab 以「三条消息」等小场景为粒度）  
-- **异步任务**（Celery、Redis 状态等典型模式）  
-- **迷你 AI 平台链路**（含假模型流水线等安全、可控的练习）
+**在修改本仓库任何内容之前，必须先阅读：**
 
-## 仓库结构（第一版骨架）
+- [`docs/00-overview/PUBLIC_LAB_AGENT_RULES.md`](docs/00-overview/PUBLIC_LAB_AGENT_RULES.md)  
+- [`docs/00-overview/COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md)
 
-| 路径 | 用途 |
+本仓库**默认公开访问**；只能生成**可公开**的教学内容、Demo 与文档，禁止写入密钥、生产配置、私有源码与个人隐私。不确定时**停工并请人工确认**。
+
+## 当前课程状态
+
+| 关卡 | 状态 | 说明 |
+|------|------|------|
+| 第 00 关：第一次进入训练营 | 已完成 | 认识训练营、练习包和 START_HERE |
+| 第 01 关：Python 与命令行入门 | 已完成 | 认识 Python、终端、JSON 和本地验收 |
+| 第 02 关：文件、编辑器与练习包使用 | 规划中 | 后续补充 |
+
+第 03 关及以后（`levels/03-…` 等）目录已预留，内容随迭代补充。
+
+## 仓库目录说明
+
+| 目录 | 用途 |
 |------|------|
-| `docs/00-overview/` | 总览、约定、环境说明；含 [`COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) 课程设计规范 |
-| `docs/01-learning-routes/` | 学习路线、关卡顺序与依赖 |
-| `docs/02-project-mapping/` | 与 Intelligence Space 正式仓库/模块的对应关系 |
-| `levels/00-first-click/` | 第 0 关：无需环境，双击网页体验任务状态 |
-| `levels/01-python-cli/` ~ `levels/08-mini-platform/` | 各关 Demo、练习与验收说明（内容将逐步填充） |
-| `templates/` | 关卡或文档模板 |
-| `scripts/` | 本地校验、生成或辅助脚本 |
+| `site/` | 在线课程播放器 |
+| `levels/` | 每一关的卡片教程、练习包和验收清单 |
+| `docs/00-overview/` | 课程设计、安全规则、发布说明 |
+| `scripts/` | 构建练习包、检查链接等工具 |
+| `templates/` | 后续模板 |
 
-当前版本**仅初始化目录与说明**；各关的完整 Demo 代码与课程正文将在后续迭代中按关添加。
+其他：`docs/01-learning-routes/`、`docs/02-project-mapping/` 为路线与主项目映射（随文档迭代）。
 
-## 如何使用（规划）
+## 公开训练仓安全规则
 
-1. **完全零基础：** 先做 `levels/00-first-click/`（ZIP + 双击 HTML），再学 `levels/01-python-cli/`（Python + 终端）。  
-2. 阅读 `docs/00-overview/`（含 [`COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) 课程设计规范）。  
-3. 按 `docs/01-learning-routes/` 中的路线继续闯关。  
-4. 每关在对应 `levels/xx-.../` 目录完成练习并对照验收标准（随内容发布）。  
-5. 需要对照正式项目时，查阅 `docs/02-project-mapping/`。
+**禁止**在本仓库放入（包括但不限于）：
 
-## 贡献说明
+- 服务器 IP / 密码 / SSH 配置  
+- API Key / Token / Secret  
+- 数据库连接串  
+- 正式项目私有源码  
+- 真实模型权重  
+- 生产部署配置  
+- 学生个人信息  
 
-欢迎补充文档、关卡说明与脚本；合并前请保持变更与单关/单文档主题一致，避免一次性大杂烩 PR。
+**详见：** [`docs/00-overview/PUBLIC_LAB_AGENT_RULES.md`](docs/00-overview/PUBLIC_LAB_AGENT_RULES.md)
+
+## 如何贡献
+
+1. **不要**直接在 `master` 上改；  
+2. **每次**一个小分支；  
+3. **每次**一个明确主题；  
+4. 通过 **PR** 合并；  
+5. **Agent 生成内容**必须先经**人工审查**。
+
+## 相关文档
+
+- [`docs/00-overview/COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) — 课程设计规范与主线地图  
+- [`docs/00-overview/PUBLIC_LAB_AGENT_RULES.md`](docs/00-overview/PUBLIC_LAB_AGENT_RULES.md) — 公开训练仓安全边界与 Agent 规则  
+- [`docs/00-overview/GITEE_PAGES_DEPLOY.md`](docs/00-overview/GITEE_PAGES_DEPLOY.md) — Gitee Pages 发布说明（与根目录发布、`../levels/` 相对路径相关）
 
 ---
 
-*Intelligence Space 新人训练仓 — 第一版目录与 README 初始化。*
+*Intelligence Space 新人训练仓 — README 为仓库入口导航，详细设计以 `docs/00-overview/` 为准。*
