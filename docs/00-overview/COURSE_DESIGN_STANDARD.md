@@ -2,6 +2,8 @@
 
 本文档是 **Intelligence Space 新人训练仓（Lab）** 的课程设计规范与 **多主线技术进阶地图**。它解决两件事：**教什么、按什么顺序教**（路径深度），以及 **用什么形态教**（卡片教程 + 本地练习包 + 验收）。后续编写关卡、评审 PR、Agent 生成内容时，应以此为准。
 
+本仓库内容可被 **公开访问**（如 GitHub Pages）。**安全边界与禁止项**（密钥、生产配置、私有源码、隐私等）见 **[`PUBLIC_LAB_AGENT_RULES.md`](PUBLIC_LAB_AGENT_RULES.md)**；Agent 生成内容时须与该文档一并遵守。
+
 ---
 
 ## 1. 本规范为什么要重写
@@ -392,6 +394,8 @@ flowchart TB
 
 ## 20. Agent 生成课程时的硬性规则
 
+**安全前提（第 0 条）**：默认 **本仓库会被公开访问**。禁止提交密钥、真实服务器信息、生产连接串、私有源码、学生隐私等；不确定是否可公开时须停工并请人工确认。详见 **[`PUBLIC_LAB_AGENT_RULES.md`](PUBLIC_LAB_AGENT_RULES.md)**。
+
 1. **不能只写 README** 作为新人唯一教程；必须配合 **卡片 `demo/index.html`** 和/或 **`START_HERE.html`**。  
 2. **每一关**须有 **`demo/index.html`** 卡片教程（除非评审批准的极少数例外，且须在 PR 说明理由）。  
 3. **需要本地动手实践的关**，**必须**有 **`practice/starter/START_HERE.html`**。  
@@ -414,6 +418,7 @@ flowchart TB
 
 | 文档（建议路径） | 职责 |
 |------------------|------|
+| [`PUBLIC_LAB_AGENT_RULES.md`](PUBLIC_LAB_AGENT_RULES.md) | **公开训练仓安全边界**：禁止内容清单、Agent 默认公开前提与停工确认规则。 |
 | `docs/01-learning-routes/` | **关卡依赖图**、周次/里程碑、**角色可选路径**（前端/后端/模型/运维裁剪表）。 |
 | `docs/02-project-mapping/` | **每一关 ↔ 主仓库路径/模块/术语** 对照表；Control Plane、双仓库、adapter 命名以主项目为准。 |
 | `docs/00-overview/` 其他文件 | 环境版本约定、工具安装截图规范、提交物命名规则等。 |
