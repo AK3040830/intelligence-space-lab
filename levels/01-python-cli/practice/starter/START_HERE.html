@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第 01 关练习包 · 从这里开始</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 2rem;
+      line-height: 1.7;
+      color: #1e293b;
+      background: #fafafa;
+    }
+    h1 { font-size: 1.2rem; }
+    h2 { font-size: 1.02rem; margin-top: 1.35rem; color: #4338ca; }
+    code, .cmd {
+      background: #e2e8f0;
+      padding: 0.12rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    pre.cmd {
+      display: block;
+      padding: 0.65rem 0.85rem;
+      overflow-x: auto;
+      margin: 0.5rem 0;
+    }
+    .warn {
+      background: #fef3c7;
+      border-left: 4px solid #d97706;
+      padding: 0.65rem 0.9rem;
+      margin: 0.75rem 0;
+      font-size: 0.92rem;
+    }
+    .ok {
+      background: #ecfdf5;
+      border-left: 4px solid #059669;
+      padding: 0.65rem 0.9rem;
+      margin: 0.75rem 0;
+      font-size: 0.92rem;
+    }
+    ol { padding-left: 1.15rem; }
+    li { margin: 0.45rem 0; }
+  </style>
+</head>
+<body>
+  <h1>第 01 关：本地练习包（Python + 终端 + JSON）</h1>
+  <p>本页指导你在<strong>自己电脑</strong>上打开终端、进入<strong>本练习包文件夹</strong>、运行 Python。请先看完上一级目录里的 <code>demo/index.html</code>（卡片教程）。</p>
+
+  <h2>1. 这一包是干什么的？</h2>
+  <p>让你用 Python 读一个 JSON 文件（<code>demo/task_status.json</code>），在终端里看到几行输出；再用 <code>verify.py</code> 自动检查文件是否齐全、JSON 是否符合要求。</p>
+
+  <h2>2. 需要安装 Python</h2>
+  <p>本关<strong>必须</strong>安装 Python 3（建议 3.10+）。若尚未安装，请按负责人提供的安装指引操作（Windows 安装时建议勾选 “Add Python to PATH”）。</p>
+
+  <h2>3. 怎么确认 Python 是否安装？</h2>
+  <p>打开<strong>终端</strong>（见下节），输入：</p>
+  <pre class="cmd">python --version</pre>
+  <p>若显示版本号即可。若提示找不到命令，在 Windows 上可再试：</p>
+  <pre class="cmd">py --version</pre>
+  <p>若只有 <code>py</code> 能用，请把下面所有 <code>python</code> 换成 <code>py</code>。</p>
+
+  <h2>4. 怎么打开终端？</h2>
+  <p><strong>Windows：</strong>开始菜单搜索「PowerShell」或「终端」。</p>
+  <p><strong>macOS：</strong>打开「终端」App。</p>
+  <p><strong>Linux：</strong>打开任意终端。</p>
+
+  <h2>5. 怎么进入「当前目录」？</h2>
+  <p>以下命令里的路径要改成<strong>你电脑上</strong>本练习包的真实路径（与本文件同级的文件夹就是 <code>starter</code>）。</p>
+  <p><strong>Linux / macOS 示例：</strong></p>
+  <pre class="cmd">cd /你的路径/intelligence-space-lab/levels/01-python-cli/practice/starter</pre>
+  <p><strong>Windows PowerShell 示例：</strong></p>
+  <pre class="cmd">cd D:\你的路径\intelligence-space-lab\levels\01-python-cli\practice\starter</pre>
+  <p>确认：当前目录下应能列到 <code>demo</code> 文件夹和 <code>verify.py</code>。</p>
+  <div class="warn"><strong>常见错误：</strong>若在 <code>01-python-cli</code> 或仓库根目录运行命令，会提示找不到 <code>demo/hello_task.py</code>。请一定要 <code>cd</code> 到 <code>practice/starter</code>。</div>
+
+  <h2>6. 运行示例脚本</h2>
+  <p>在已进入 <code>starter</code> 的前提下执行：</p>
+  <pre class="cmd">python demo/hello_task.py</pre>
+  <p>若 <code>python</code> 无效，试：</p>
+  <pre class="cmd">python3 demo/hello_task.py</pre>
+  <p>你应看到类似：任务ID、当前状态、当前进度、提示信息 四行输出。</p>
+
+  <h2>7. 运行验收脚本</h2>
+  <p>仍在同一目录执行：</p>
+  <pre class="cmd">python verify.py</pre>
+  <p>成功时应输出：</p>
+  <pre class="cmd">[OK] 第 01 关验收通过</pre>
+
+  <h2>8. 常见错误速查</h2>
+  <ul>
+    <li><strong>不在正确目录：</strong>先 <code>cd</code> 到 <code>practice/starter</code>。</li>
+    <li><strong>Python 没安装或未进 PATH：</strong>重装或试用 <code>py</code>。</li>
+    <li><strong>JSON 格式写错：</strong>逗号、英文引号、括号要配对；可对照原始 <code>task_status.json</code>。</li>
+    <li><strong>找不到文件：</strong>确认 <code>demo/hello_task.py</code> 与 <code>demo/task_status.json</code> 仍在 <code>demo</code> 文件夹内。</li>
+  </ul>
+
+  <div class="ok">完成上述步骤后，按 <code>exercises.md</code> 做小练习，并对照上一级目录的 <code>checklist.md</code> 准备提交物。</div>
+</body>
+</html>

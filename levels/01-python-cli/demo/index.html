@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intelligence Space Lab - 第 01 关 · 卡片教程</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #4f46e5;
+      --ok: #059669;
+      --bad: #dc2626;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap { max-width: 700px; margin: 0 auto; padding: 1.25rem 1rem 2.5rem; }
+    h1 { font-size: 1.35rem; margin: 0 0 0.5rem; }
+    .lead { color: var(--muted); margin: 0 0 1.25rem; font-size: 0.95rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 0.85rem;
+    }
+    .card h2 { margin: 0 0 0.5rem; font-size: 1.02rem; color: var(--accent); }
+    .card p { margin: 0.35rem 0; font-size: 0.92rem; }
+    code { background: #e2e8f0; padding: 0.12rem 0.35rem; border-radius: 4px; font-size: 0.88em; }
+    .quiz { margin-top: 1.25rem; }
+    .quiz h3 { font-size: 1rem; margin: 0 0 0.65rem; }
+    .q-block { margin-bottom: 1rem; padding: 0.85rem; background: #fff; border: 1px solid var(--border); border-radius: 10px; }
+    .q-block p { font-weight: 600; margin: 0 0 0.5rem; }
+    .opts button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 0.35rem 0;
+      padding: 0.5rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .opts button:hover { border-color: var(--accent); }
+    .feedback { margin-top: 0.45rem; font-size: 0.88rem; min-height: 1.4em; }
+    .feedback.ok { color: var(--ok); }
+    .feedback.bad { color: var(--bad); }
+    .next {
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: #eef2ff;
+      border-radius: 10px;
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Intelligence Space Lab - 第 01 关</h1>
+    <p class="lead">
+      本页是<strong>网页卡片教程</strong>：只讲概念，<strong>不会在浏览器里真的运行 Python</strong>。动手跑脚本请到文件夹
+      <code>practice/starter/</code>，打开 <code>START_HERE.html</code>。
+    </p>
+
+    <div class="card">
+      <h2>1. Python 是什么？</h2>
+      <p>一种常用的编程语言。你可以用「人话」写逻辑，交给 <strong>Python 解释器</strong>执行。本关里我们会用一小段 Python 去读磁盘上的 JSON 文件并打印出来。</p>
+    </div>
+
+    <div class="card">
+      <h2>2. 终端是什么？</h2>
+      <p>一个用文字输入命令的窗口（Windows 上常见 PowerShell /「终端」；Mac/Linux 叫「终端」）。后面运行 <code>python demo/hello_task.py</code> 就是在终端里输入的。</p>
+    </div>
+
+    <div class="card">
+      <h2>3. 当前目录是什么？</h2>
+      <p>终端「此刻站在哪个文件夹里」。命令里的 <code>demo/hello_task.py</code> 是相对路径：相对<strong>当前目录</strong>去找 <code>demo</code> 文件夹。站错文件夹就会提示找不到文件。</p>
+    </div>
+
+    <div class="card">
+      <h2>4. JSON 是什么？</h2>
+      <p>一种用<strong>大括号、英文双引号、逗号</strong>写出来的数据格式，常用来存「一堆键值对」。Python 读进来以后很像字典：可以用键名取出对应的值。</p>
+    </div>
+
+    <div class="card">
+      <h2>5. 为什么真正跑 Python 要放到练习包里？</h2>
+      <p>浏览器里的卡片负责<strong>讲清楚概念</strong>；练习包里的 <code>START_HERE.html</code> 会一步一步写：开终端、进目录、输入哪条命令、出错了怎么办。这样你不会「光看网页却不知道怎么下手」。</p>
+    </div>
+
+    <div class="quiz">
+      <h3>小测验（点选项看反馈）</h3>
+
+      <div class="q-block" id="q1">
+        <p>题 1：<code>print("hello")</code> 会输出什么？</p>
+        <div class="opts">
+          <button type="button" data-correct="false">什么都不输出</button>
+          <button type="button" data-correct="true">在终端里显示 hello</button>
+          <button type="button" data-correct="false">弹出一个网页</button>
+        </div>
+        <div class="feedback" id="f1"></div>
+      </div>
+
+      <div class="q-block" id="q2">
+        <p>题 2：JSON 里 <code>"status": "running"</code> 通常表示什么？</p>
+        <div class="opts">
+          <button type="button" data-correct="false">网络断开了</button>
+          <button type="button" data-correct="true">某种「进行中的状态」标签（具体含义由业务约定）</button>
+          <button type="button" data-correct="false">文件已经删掉了</button>
+        </div>
+        <div class="feedback" id="f2"></div>
+      </div>
+    </div>
+
+    <div class="next">
+      <strong>下一步：</strong>在资源管理器中进入
+      <code>levels/01-python-cli/practice/starter/</code>，双击打开 <code>START_HERE.html</code>，按网页步骤在终端运行
+      <code>python demo/hello_task.py</code> 与 <code>python verify.py</code>。
+    </div>
+  </div>
+
+  <script>
+    function wireQuiz(qid, fid) {
+      var block = document.getElementById(qid);
+      var fb = document.getElementById(fid);
+      block.querySelectorAll("button").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var ok = btn.getAttribute("data-correct") === "true";
+          fb.className = "feedback " + (ok ? "ok" : "bad");
+          fb.textContent = ok ? "对。请到练习包里用真 Python 再跑一遍加深印象。" : "再想想看，或先读上面卡片里的说明。";
+        });
+      });
+    }
+    wireQuiz("q1", "f1");
+    wireQuiz("q2", "f2");
+  </script>
+</body>
+</html>
