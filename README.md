@@ -6,6 +6,10 @@
 
 如果你还不会 Git、Python 或命令行，请先从 **`levels/00-first-click/`** 开始：这一关在浏览器里点开即可，**不需要安装环境**，只需下载 ZIP、解压并双击 `demo/index.html`。建立「任务状态」直觉后，再进入第 01 关学习终端与 Python。
 
+## 在线训练营入口
+
+**`site/index.html`** 是在线课程播放器入口，包含左侧学习路径与中间课程卡片（在线练习嵌在对应小节内）；各关 `practice/package.zip` 可由 `python scripts/build_practice_packages.py` 生成后配合下载。后续可通过 **Gitee Pages** 发布为在线访问入口；当前也可以下载 ZIP 后双击 `site/index.html` 本地学习。若在 Gitee 文件列表中点击 HTML 只看到源码，请下载 ZIP 后在本地打开。
+
 ## 课程设计原则
 
 本训练营采用 **「多主线进阶」** 的方式组织内容（前端、后端、模型服务、网络、部署、协作、主项目综合等分线推进，禁止用少数粗阶段一笔带过），在教学形态上仍坚持：
