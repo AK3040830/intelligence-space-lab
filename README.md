@@ -8,7 +8,12 @@
 
 ## 在线训练营入口
 
-**`site/index.html`** 是在线课程播放器入口，包含左侧学习路径与中间课程卡片（在线练习嵌在对应小节内）；各关 `practice/package.zip` 可由 `python scripts/build_practice_packages.py` 生成后配合下载。后续可通过 **Gitee Pages** 发布为在线访问入口；当前也可以下载 ZIP 后双击 `site/index.html` 本地学习。若在 Gitee 文件列表中点击 HTML 只看到源码，请下载 ZIP 后在本地打开。
+本仓库已提供静态课程入口：
+
+- **本地打开：** 双击仓库根目录 **`index.html`**（会跳转到课程播放器）或直接双击 **`site/index.html`**
+- **课程播放器：** **`site/index.html`**（左侧学习路径与中间课程卡片，在线练习嵌在对应小节内）
+
+各关 **`practice/package.zip`** 可由 `python scripts/build_practice_packages.py` 生成后配合下载。后续发布 **Gitee Pages** 时，**建议以仓库根目录作为发布目录**，因为播放器会链接到 **`levels/**`** 中的卡片教程、`START_HERE` 与 **`package.zip`**（仅发布 `site/` 子目录时 **`../levels/...`** 可能失效）。详细说明见 [`docs/00-overview/GITEE_PAGES_DEPLOY.md`](docs/00-overview/GITEE_PAGES_DEPLOY.md)。若在 Gitee 文件列表中点击 HTML 只看到源码，请使用 Pages 访问地址或下载 ZIP 后在本地打开。
 
 ## 课程设计原则
 
