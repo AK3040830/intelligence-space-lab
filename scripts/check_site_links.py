@@ -17,6 +17,9 @@ REQUIRED = [
     "levels/01-python-cli/demo/index.html",
     "levels/01-python-cli/practice/starter/START_HERE.html",
     "levels/01-python-cli/practice/package.zip",
+    "levels/02-editor-and-files/demo/index.html",
+    "levels/02-editor-and-files/practice/starter/START_HERE.html",
+    "levels/02-editor-and-files/practice/package.zip",
 ]
 
 
