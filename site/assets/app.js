@@ -635,11 +635,240 @@
         },
       ],
     },
+    {
+      id: "02",
+      title: "第 02 关：文件、编辑器与练习包使用",
+      cardTutorialUrl: "../levels/02-editor-and-files/demo/index.html",
+      startHereUrl: "../levels/02-editor-and-files/practice/starter/START_HERE.html",
+      packageZipUrl: "../levels/02-editor-and-files/practice/package.zip",
+      sections: [
+        {
+          navTitle: "01 本关地基",
+          title: "本关地基：文件、编辑器与练习包",
+          oneLiner: "本关不学编程语法，只练「找得到文件、改得对、存得下、验得了」。",
+          whyLearn: "后面 HTML、Python、HTTP、Vue 每一关都要你在 `starter` 里改文件；这一关把肌肉记忆建好。",
+          paragraphs: [
+            "你要分清三件事：**在线卡片**（浏览器里读概念）、**练习包文件夹**（本机里改文件）、**checklist.md**（对照验收）。",
+            "本关**不要求** Git、终端、Python；只要资源管理器 + 浏览器 + VS Code / Cursor（或同类编辑器）。",
+          ],
+          myth: "误区：以为「看过网页」就算完成。正解：必须在本地**保存**练习文件，并有截图或说明。",
+          nextStep: "下一节：文件与文件夹。",
+          exercise: { type: "none", hint: "本节无在线题，读完点「下一节」。" },
+        },
+        {
+          navTitle: "02 文件与文件夹",
+          title: "文件与文件夹",
+          oneLiner: "文件是有名字的一段内容；文件夹用来归类文件和子文件夹。",
+          whyLearn: "路径念不顺，后面每一关都会在「找不到文件」上卡住。",
+          paragraphs: [
+            "**文件**例如 `hello-file.txt`、`profile-card.html`：要用编辑器打开、修改、保存。",
+            "**文件夹**例如 `starter`、`notes`：进入正确文件夹，才不会改错副本。",
+          ],
+          example: {
+            label: "本关练习包路径（在仓库中）",
+            text: "`levels/02-editor-and-files/practice/starter/`",
+          },
+          myth: "误区：在压缩包内直接双击编辑。正解：先解压到普通文件夹，再进 `starter`。",
+          nextStep: "下一节：ZIP 与解压。",
+          exercise: {
+            type: "shortText",
+            title: "用一句话说出「文件夹」和「文件」的区别",
+            desc: "不必很长，提到归类或包含关系即可。",
+            placeholder: "文件夹是……",
+            minLen: 4,
+            okText: "很好。核心是：文件夹装文件，文件是具体的内容。",
+            badText: "再试一次：想想谁「装着」谁。",
+          },
+        },
+        {
+          navTitle: "03 ZIP 与解压",
+          title: "ZIP 与解压",
+          oneLiner: "ZIP 是打包；解压是把包变回能长期编辑的文件夹。",
+          whyLearn: "很多新人下载了 ZIP 却从没解压，导致路径与保存行为异常。",
+          paragraphs: [
+            "下载得到 `.zip` 后，用系统「解压」「全部提取」等命令，得到**普通文件夹**再进入 `starter`。",
+            "若使用整仓 ZIP，请在解压后的仓库树里找到本关的 `practice/starter/`。",
+          ],
+          myth: "误区：下载完立刻删 ZIP。正解：确认解压成功、能打开 `START_HERE.html` 后再清理也可。",
+          nextStep: "下一节：编辑器与打开文件夹。",
+          exercise: {
+            type: "choice",
+            title: "拿到本关 package.zip 后，第一步更合理的是？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 直接在压缩包里双击所有文件" },
+              { value: "B", label: "B. 解压到文件夹，再进入 starter 练习" },
+              { value: "C", label: "C. 把 ZIP 改名为 .html 再打开" },
+            ],
+            correct: "B",
+            okText: "对。先解压，路径与保存才稳定。",
+            badText: "再想想：编辑器需要稳定的磁盘路径。",
+          },
+        },
+        {
+          navTitle: "04 编辑器与打开文件夹",
+          title: "编辑器与「打开文件夹」",
+          oneLiner: "用 VS Code / Cursor「打开文件夹」，让整个 starter 出现在左侧文件树。",
+          whyLearn: "只打开零散单文件时，很容易不知道当前文件属于哪一关、哪一路径。",
+          paragraphs: [
+            "在编辑器中选 **文件 → 打开文件夹**，选中 **`starter`** 整个文件夹（不是只选某一个文件）。",
+            "左侧树里应能看到 `hello-file.txt`、`profile-card.html`、`notes/` 等。",
+          ],
+          myth: "误区：从「最近」里随便打开一个副本。正解：从资源管理器或「打开文件夹」对准本关 `starter`。",
+          nextStep: "下一节：保存与刷新浏览器。",
+          exercise: {
+            type: "choice",
+            title: "为什么更推荐「打开整个 starter 文件夹」？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 因为这样会更快学会 Python" },
+              { value: "B", label: "B. 因为能同时看到本关相关文件，路径不容易乱" },
+              { value: "C", label: "C. 因为不打开文件夹就无法解压" },
+            ],
+            correct: "B",
+            okText: "对。整夹打开＝上下文完整。",
+            badText: "再对照上一节：核心是路径与上下文。",
+          },
+        },
+        {
+          navTitle: "05 保存与刷新浏览器",
+          title: "修改、保存与刷新浏览器",
+          oneLiner: "改完必须保存；看网页效果要在浏览器里刷新。",
+          whyLearn: "「我明明改了为什么没变」九成是**没保存**或**没刷新**。",
+          paragraphs: [
+            "在编辑器里 **Ctrl+S / Cmd+S** 保存；再到浏览器看 `profile-card.html` 时 **F5 或 Ctrl+R** 刷新。",
+            "若仍看不到变化，确认浏览器打开的是**你保存的那个路径**的 HTML。",
+          ],
+          myth: "误区：以为浏览器会自动读编辑器内存。正解：保存写入磁盘后，刷新才会加载新内容。",
+          nextStep: "下一节：START_HERE 与 checklist。",
+          exercise: {
+            type: "choice",
+            title: "改完网页文件后，为什么常常需要「刷新浏览器」？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 因为浏览器坏了" },
+              { value: "B", label: "B. 因为浏览器要重新从磁盘读取你保存后的文件" },
+              { value: "C", label: "C. 因为刷新会自动上传 Git" },
+            ],
+            correct: "B",
+            okText: "对。刷新让浏览器重新加载页面资源。",
+            badText: "再想想磁盘、保存与显示的关系。",
+          },
+        },
+        {
+          navTitle: "06 START_HERE 与 checklist",
+          title: "START_HERE.html 与 checklist.md",
+          oneLiner: "START_HERE 是练习包里的网页步骤；checklist 是本关验收清单。",
+          whyLearn: "训练营靠「步骤 + 清单」降低沟通成本，而不是口头传说。",
+          paragraphs: [
+            "**`START_HERE.html`**：放在 `starter` 里，按步骤改 `hello-file.txt`、`profile-card.html`、`notes/task-note.txt`。",
+            "**`checklist.md`**：在本关根目录（与 `practice` 同级），列出提交物与自检项。",
+          ],
+          myth: "误区：只看 START_HERE 不保存文件。正解：步骤里要求保存的，都必须真实落盘。",
+          nextStep: "下一节：在线小测。",
+          exercise: { type: "none", hint: "本节无在线题。下一节有选择题巩固。" },
+        },
+        {
+          navTitle: "07 在线小测",
+          title: "在线小测：ZIP、文件夹与保存",
+          oneLiner: "用选择题巩固：解压、打开文件夹、保存与刷新的直觉。",
+          whyLearn: "把名词与动作对齐，本地动手时少踩坑。",
+          paragraphs: [
+            "**Q2 自测：** 为什么建议打开整个 `starter` 文件夹？——**正解：**左侧能看到本关相关文件，路径最清晰。",
+            "**Q3 自测：** 修改后为什么要保存？——**正解：**不保存则刷新或重开文件时看不到你的修改。",
+          ],
+          myth: "",
+          nextStep: "下一节：本关总结与本地实践入口。",
+          exercise: {
+            type: "choice",
+            title: "Q1：下载 ZIP 后，第一步最应该做什么？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 直接删除 ZIP" },
+              { value: "B", label: "B. 先解压成普通文件夹，再进入练习路径" },
+              { value: "C", label: "C. 把 ZIP 当网页拖进浏览器" },
+            ],
+            correct: "B",
+            okText: "对。先解压，再进入 starter。",
+            badText: "再想想：压缩包不是长期编辑的工作区。",
+          },
+        },
+        {
+          navTitle: "08 本关总结与实践",
+          title: "本关总结 + 本地实践入口",
+          oneLiner: "回顾「第 02 关：文件、编辑器与练习包使用」，再在本地完成保存与截图。",
+          whyLearn: "把「打开—修改—保存—刷新—对照清单」走通，后面学三件套与脚本会轻松很多。",
+          paragraphs: [
+            "以下总结对应在线读完的各节；**真正完成本关**要在本地 **`practice/starter/`** 按 **`START_HERE.html`** 保存多个文件，并对照 **`checklist.md`**。动手入口见下方卡片与页面底部链接。",
+          ],
+          summaryPanels: [
+            {
+              type: "checklist",
+              title: "本关你学会了什么",
+              items: [
+                "**文件** 与 **文件夹** 的区别与用途。",
+                "**ZIP** 与 **解压**：先解压再进入 `starter` 练习。",
+                "用 **VS Code / Cursor** 等编辑器 **打开整个练习文件夹** 的习惯。",
+                "**修改 → 保存 → 浏览器刷新** 才能看到网页变化。",
+                "**`START_HERE.html`** 是练习包里的 **网页版操作步骤**。",
+                "**`checklist.md`** 是 **自检与提交物清单**（在本关根目录）。",
+                "**完成本关** 必须 **真实保存** 练习文件，而不是只浏览网页。",
+              ],
+            },
+            {
+              type: "tags",
+              title: "关键动作",
+              tags: ["解压", "starter", "打开文件夹", "保存", "刷新", "START_HERE", "checklist"],
+            },
+            {
+              type: "checklist",
+              title: "你现在应该能做什么",
+              items: [
+                "能独立解压本关 ZIP 并进入 **`level-02-editor-and-files-starter/`**（或仓库内 `starter`）路径。",
+                "能修改 **`hello-file.txt`**、**`profile-card.html`**、**`notes/task-note.txt`** 并 **保存**。",
+                "能对照 **`checklist.md`** 准备截图与一句话总结。",
+              ],
+            },
+            {
+              type: "calloutMuted",
+              title: "常见错误回顾",
+              items: [
+                "在压缩包内直接编辑 → **先解压** 到普通文件夹。",
+                "改完网页 **不保存** 就刷新 → 先 **Ctrl+S / Cmd+S**。",
+                "只打开 **单个文件** 导致路径混乱 → 用 **打开文件夹** 打开整个 `starter`。",
+              ],
+            },
+            {
+              type: "next",
+              title: "下一步怎么做",
+              items: [
+                "按 **`START_HERE.html`** 完成本地步骤并对照 **`checklist.md`** 提交。",
+                "然后进入 **第 03 关：HTML / CSS / JavaScript 基础**（内容规划中）。",
+              ],
+            },
+            {
+              type: "practice",
+              title: "本地实践入口",
+              lines: [
+                "打开 **`START_HERE.html`**：依次修改 **`hello-file.txt`**、**`profile-card.html`**、**`notes/task-note.txt`** 并保存；用浏览器打开 **`profile-card.html`** 并刷新查看效果。",
+                "需要压缩包时优先 **本关 `package.zip`**；若暂时无法下载，请用 **整仓 ZIP** 进入本关 **`practice/starter/`**。",
+              ],
+              note: "解压后顶层目录名等说明见在线练习区下方蓝色提示框。",
+            },
+          ],
+          myth: "",
+          nextStep: "",
+          exercise: {
+            type: "none",
+            hint: "本节无在线题。动手请使用上方「本地实践入口」卡片，或页面底部的「打开 START_HERE」「下载本关练习包」。",
+          },
+        },
+      ],
+    },
   ];
 
   /** 与仓库 `levels/` 规划一致；仅侧边栏预告，非可播放课程 */
   var PLANNED_ROADMAP = [
-    "第 02 关：文件、编辑器与练习包使用",
     "第 03 关：HTML / CSS / JavaScript 基础",
     "第 04 关：Python 基础语法与数据结构",
     "第 05 关：HTTP / URL / 浏览器请求",
@@ -890,8 +1119,12 @@
   /** 仅在本关最后一个小节（本地练习包）展示详细说明 */
   function sectionPackDetailHtml() {
     var c = getCourse();
-    var folder =
-      c.id === "00" ? "level-00-first-click-starter" : "level-01-python-cli-starter";
+    var folderMap = {
+      "00": "level-00-first-click-starter",
+      "01": "level-01-python-cli-starter",
+      "02": "level-02-editor-and-files-starter",
+    };
+    var folder = folderMap[c.id] || "level-starter";
     return (
       '<div class="pack-note pack-note--detail" role="note">' +
       "<strong>本关练习包与 ZIP：</strong>不要求新人一开始 <code>git clone</code> 全仓。请优先使用下方「下载本关练习包」获取本关最小 " +

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intelligence Space Lab - 第 02 关</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --card: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #4f46e5;
+      --accent-dim: #e0e7ff;
+      --border: #e2e8f0;
+      --ok: #15803d;
+      --bad: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+    h1 { font-size: 1.4rem; margin: 0 0 0.5rem; }
+    .lead { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.95rem; }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 560px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    .concept-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      text-align: left;
+    }
+    .concept-card:hover, .concept-card:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(79, 70, 229, 0.12);
+    }
+    .concept-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+      color: var(--accent);
+    }
+    .concept-card .hint { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    .concept-card .detail {
+      display: none;
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.9rem;
+    }
+    .concept-card.open .detail { display: block; }
+    .concept-card.open { border-color: var(--accent); }
+    .detail p { margin: 0.4rem 0; }
+    .detail .tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: #3730a3;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      margin-top: 0.35rem;
+    }
+    .quiz-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .quiz-box h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+    .q { margin: 1rem 0 0.35rem; font-weight: 600; font-size: 0.95rem; }
+    .opts { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.35rem 0; }
+    .opts label {
+      display: block;
+      padding: 0.45rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .opts label:hover { background: #f8fafc; }
+    .btn {
+      display: inline-block;
+      padding: 0.55rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .fb { margin-top: 0.5rem; font-size: 0.88rem; min-height: 1.25em; }
+    .fb.ok { color: var(--ok); }
+    .fb.bad { color: var(--bad); }
+    .download-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .download-box h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+    .btn-link {
+      display: inline-block;
+      padding: 0.65rem 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .note { font-size: 0.88rem; color: var(--muted); margin: 0.75rem 0 0; }
+    .done-box {
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .done-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .done-box ul { margin: 0.35rem 0 0; padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Intelligence Space Lab - 第 02 关</h1>
+    <p class="lead">
+      本关<strong>不教编程语法</strong>，只练：<strong>文件 / 文件夹 / ZIP / 解压 / 编辑器 / 打开文件夹 / 保存 / 刷新浏览器</strong>，以及 <code>START_HERE.html</code> 与 <code>checklist.md</code> 是干什么的。下面每张卡片可点开阅读。
+    </p>
+
+    <div class="grid" id="cards">
+      <button type="button" class="concept-card" data-card="0" aria-expanded="false">
+        <h2>1. 文件是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>文件就是硬盘上的一段有名字的内容，例如 <code>hello-file.txt</code>、<code>profile-card.html</code>。</p>
+          <p><strong>你要会：</strong>能在文件夹里找到它，并用编辑器打开、修改、保存。</p>
+          <p><span class="tag">本关练习</span> 你会改 <code>hello-file.txt</code> 和 <code>profile-card.html</code>。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="1" aria-expanded="false">
+        <h2>2. 文件夹是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>文件夹（目录）用来<strong>归类</strong>文件；里面还可以有子文件夹。</p>
+          <p><strong>例子：</strong>本关练习在 <code>practice/starter/</code> 里；<code>notes/</code> 里又放了 <code>task-note.txt</code>。</p>
+          <p><span class="tag">易错点</span> 在压缩包里「看」到文件不等于已经解压到普通文件夹。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="2" aria-expanded="false">
+        <h2>3. ZIP 和解压是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>ZIP：</strong>把一堆文件压成一个 <code>.zip</code> 包，方便下载。</p>
+          <p><strong>解压：</strong>把 ZIP 变回普通文件夹，才能稳定地用编辑器打开、保存。</p>
+          <p><span class="tag">本关</span> 下载 <code>package.zip</code> 后，请先解压，再进入解压后的 <code>starter</code> 文件夹。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="3" aria-expanded="false">
+        <h2>4. 编辑器是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>比记事本更专业的「改代码/改网页」的工具，例如 <strong>VS Code</strong>、<strong>Cursor</strong>。</p>
+          <p><strong>你要会：</strong>用「打开文件夹」让整个 <code>starter</code> 出现在左侧文件树里，再点文件编辑。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="4" aria-expanded="false">
+        <h2>5. 为什么要「打开文件夹」？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>正解：</strong>打开<strong>整个</strong> <code>starter</code> 文件夹，你能同时看到 <code>hello-file.txt</code>、<code>profile-card.html</code>、<code>notes/</code>，路径最不容易乱。</p>
+          <p><strong>误区：</strong>只从「最近打开」里打开单个文件，常常不知道文件到底保存在哪。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="5" aria-expanded="false">
+        <h2>6. START_HERE.html 是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>放在练习包里的<strong>网页版操作说明书</strong>，假设你已经站在 <code>starter</code> 文件夹里，一步一步告诉你点哪里、改什么、怎么保存。</p>
+          <p><span class="tag">记住</span> 只看网页不按步骤保存文件，不算完成本关。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="6" aria-expanded="false">
+        <h2>7. checklist.md 是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>给新人和负责人用的<strong>自检清单</strong>：是否解压、是否保存、是否截图、是否一句话总结。</p>
+          <p><span class="tag">位置</span> 在本关根目录（与 <code>practice</code> 同级），不在 <code>starter</code> 里面。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="7" aria-expanded="false">
+        <h2>8. 本关要完成什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>按 <code>START_HERE.html</code> 改三个练习文件并保存；用浏览器打开 <code>profile-card.html</code> 并刷新看效果；填写 <code>notes/task-note.txt</code>；对照 <code>checklist.md</code> 准备提交物。</p>
+          <p><span class="tag">下一关</span> 第 03 关将学 HTML / CSS / JavaScript 基础（规划中）。</p>
+        </div>
+      </button>
+    </div>
+
+    <div class="quiz-box">
+      <h3>简单在线小测（点选后按「检查本题」）</h3>
+
+      <div class="q">Q1：下载 ZIP 后，第一步最应该做什么？</div>
+      <div class="opts" id="q1opts">
+        <label><input type="radio" name="q1" value="A" /> A. 直接删除 ZIP</label>
+        <label><input type="radio" name="q1" value="B" /> B. 解压成一个普通文件夹，再进入练习路径</label>
+        <label><input type="radio" name="q1" value="C" /> C. 把 ZIP 拖到浏览器地址栏</label>
+      </div>
+      <button type="button" class="btn" data-check="q1">检查 Q1</button>
+      <p class="fb" id="fb1"></p>
+
+      <div class="q">Q2：为什么建议用编辑器「打开整个 starter 文件夹」？</div>
+      <div class="opts" id="q2opts">
+        <label><input type="radio" name="q2" value="A" /> A. 因为打开文件夹会更快写完代码</label>
+        <label><input type="radio" name="q2" value="B" /> B. 因为能在左侧看到全部相关文件，路径不容易乱</label>
+        <label><input type="radio" name="q2" value="C" /> C. 因为不打开文件夹就无法安装 Python</label>
+      </div>
+      <button type="button" class="btn" data-check="q2">检查 Q2</button>
+      <p class="fb" id="fb2"></p>
+
+      <div class="q">Q3：修改文件后为什么要保存？</div>
+      <div class="opts" id="q3opts">
+        <label><input type="radio" name="q3" value="A" /> A. 保存只是习惯，不保存也没事</label>
+        <label><input type="radio" name="q3" value="B" /> B. 不保存的话，浏览器刷新或重新打开文件时看不到你的修改</label>
+        <label><input type="radio" name="q3" value="C" /> C. 保存会自动帮你上传 Git</label>
+      </div>
+      <button type="button" class="btn" data-check="q3">检查 Q3</button>
+      <p class="fb" id="fb3"></p>
+    </div>
+
+    <div class="download-box">
+      <h3>下载本关练习包</h3>
+      <p style="margin: 0 0 0.75rem; font-size: 0.92rem;">
+        若你正在整仓仓库里学习，也可以直接进入
+        <code>levels/02-editor-and-files/practice/starter/</code>，与下载 ZIP 效果相同。
+      </p>
+      <a class="btn-link" href="../practice/package.zip" download>下载本关练习包（package.zip）</a>
+      <p class="note">若链接暂时无效，请使用整仓 ZIP，进入上述 <code>starter</code> 路径。</p>
+    </div>
+
+    <div class="done-box">
+      <h3>我完成了本关在线阅读</h3>
+      <p style="margin: 0 0 0.5rem; font-size: 0.92rem;">请继续：</p>
+      <ul>
+        <li>打开练习包里的 <code>START_HERE.html</code>，完成本地动手；</li>
+        <li>按 <code>checklist.md</code> 准备截图与一句话总结。</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".concept-card").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var open = el.classList.toggle("open");
+        el.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    });
+
+    var answers = { q1: "B", q2: "B", q3: "B" };
+
+    document.querySelectorAll("[data-check]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-check");
+        var sel = document.querySelector('input[name="' + id + '"]:checked');
+        var fb = document.getElementById(id === "q1" ? "fb1" : id === "q2" ? "fb2" : "fb3");
+        if (!sel) {
+          fb.className = "fb bad";
+          fb.textContent = "请先选一个选项。";
+          return;
+        }
+        var ok = sel.value === answers[id];
+        fb.className = "fb " + (ok ? "ok" : "bad");
+        fb.textContent = ok
+          ? "正确。"
+          : "不对，再想想看卡片里的说明。";
+      });
+    });
+  </script>
+</body>
+</html>

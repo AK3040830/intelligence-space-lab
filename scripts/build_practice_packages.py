@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build level-00 and level-01 practice package zips (stdlib only)."""
+"""Build level-00, 01, 02 practice package zips (stdlib only)."""
 
 import zipfile
 from pathlib import Path
@@ -16,6 +16,11 @@ PACKAGES = [
         ROOT / "levels/01-python-cli/practice/starter",
         "level-01-python-cli-starter",
         ROOT / "levels/01-python-cli/practice/package.zip",
+    ),
+    (
+        ROOT / "levels/02-editor-and-files/practice/starter",
+        "level-02-editor-and-files-starter",
+        ROOT / "levels/02-editor-and-files/practice/package.zip",
     ),
 ]
 
