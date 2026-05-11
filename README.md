@@ -29,7 +29,7 @@ https://ak3040830.github.io/intelligence-space-lab/
 1. [在线训练营入口](https://ak3040830.github.io/intelligence-space-lab/) — 新人实际看到什么；  
 2. [`docs/00-overview/COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) — 课程路线与教学形态；  
 3. [`docs/00-overview/PUBLIC_LAB_AGENT_RULES.md`](docs/00-overview/PUBLIC_LAB_AGENT_RULES.md) — 公开仓边界与禁止项；  
-4. **当前已完成关卡：** `levels/00-first-click`、`levels/01-python-cli`、`levels/02-editor-and-files`；**下一关：** 第 03 关（见下表）。
+4. **当前已完成关卡：** `levels/00-first-click` … `levels/03-html-css-js`；**下一关：** 第 04 关（见下表）。
 
 ## 如果你是 Agent / 协作者
 
@@ -47,8 +47,9 @@ https://ak3040830.github.io/intelligence-space-lab/
 | 第 00 关：第一次进入训练营 | 已完成 | `levels/00-first-click` |
 | 第 01 关：Python 与命令行入门 | 已完成 | `levels/01-python-cli` |
 | 第 02 关：文件、编辑器与练习包使用 | 已完成 | `levels/02-editor-and-files` |
-| 第 03 关：HTML / CSS / JavaScript 基础 | 规划中（下一关） | `levels/03-html-css-js` |
-| 第 04–13 关 | 规划中 | 见 `levels/` 与 [`COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) |
+| 第 03 关：HTML / CSS / JavaScript 基础 | 已完成 | `levels/03-html-css-js` |
+| 第 04 关：Python 基础语法与数据结构 | 规划中（下一关） | `levels/04-python-basics` |
+| 第 05–13 关 | 规划中 | 见 `levels/` 与 [`COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) |
 
 完整顺序与依赖见规范文档中的 **推荐课程路线**。
 

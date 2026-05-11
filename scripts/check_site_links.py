@@ -20,6 +20,9 @@ REQUIRED = [
     "levels/02-editor-and-files/demo/index.html",
     "levels/02-editor-and-files/practice/starter/START_HERE.html",
     "levels/02-editor-and-files/practice/package.zip",
+    "levels/03-html-css-js/demo/index.html",
+    "levels/03-html-css-js/practice/starter/START_HERE.html",
+    "levels/03-html-css-js/practice/package.zip",
 ]
 
 

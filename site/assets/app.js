@@ -843,7 +843,7 @@
               title: "下一步怎么做",
               items: [
                 "按 **`START_HERE.html`** 完成本地步骤并对照 **`checklist.md`** 提交。",
-                "然后进入 **第 03 关：HTML / CSS / JavaScript 基础**（内容规划中）。",
+                "然后进入 **第 03 关：HTML / CSS / JavaScript 基础**（见在线训练营）。",
               ],
             },
             {
@@ -865,11 +865,242 @@
         },
       ],
     },
+    {
+      id: "03",
+      title: "第 03 关：HTML / CSS / JavaScript 基础",
+      cardTutorialUrl: "../levels/03-html-css-js/demo/index.html",
+      startHereUrl: "../levels/03-html-css-js/practice/starter/START_HERE.html",
+      packageZipUrl: "../levels/03-html-css-js/practice/package.zip",
+      sections: [
+        {
+          navTitle: "01 网页是什么",
+          title: "网页是什么",
+          oneLiner: "浏览器里看到的一「页」，通常由 HTML、CSS、JavaScript 一起呈现。",
+          whyLearn: "先把角色分清楚，后面学组件、框架才不会把「结构」和「样式」混成一团。",
+          paragraphs: [
+            "**网页**本质是文本文件（常见扩展名 `.html`）交给浏览器解释；再加上样式表 `.css` 和脚本 `.js`。",
+            "本关所有练习都在**本地文件**上完成：双击打开、编辑器修改、保存、刷新。",
+          ],
+          myth: "误区：以为网页一定需要联网服务器才能看。正解：本地 `index.html` 双击即可打开（部分浏览器对本地 JS 限制极少，本关示例足够）。",
+          nextStep: "下一节：HTML 负责结构。",
+          exercise: { type: "none", hint: "本节无在线题，读完点「下一节」。" },
+        },
+        {
+          navTitle: "02 HTML 负责结构",
+          title: "HTML 负责结构",
+          oneLiner: "HTML 用标签描述标题、段落、按钮等「放什么、顺序如何」。",
+          whyLearn: "结构错了，再好看的 CSS 也救不回来；后续 DOM 概念也建立在标签树上。",
+          paragraphs: [
+            "常见标签：`<html>`、`<head>`、`<body>`、`<h1>`、`<p>`、`<button>` 等。",
+            "本关练习里你会改 **标题文字**、**自我介绍**、**按钮上的字**——都在 `index.html` 里。",
+          ],
+          example: {
+            label: "极简结构示意",
+            code: "<body>\n  <h1>标题</h1>\n  <p>段落</p>\n</body>",
+          },
+          myth: "误区：用 Word 排版当网页。正解：网页结构用 HTML 标签写，保存为 `.html`。",
+          nextStep: "下一节：CSS 负责样式。",
+          exercise: {
+            type: "choice",
+            title: "下面哪一项更像「HTML 在做的事」？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 决定按钮点击后弹出什么提示" },
+              { value: "B", label: "B. 决定页面上有没有一个按钮、标题在第几级出现" },
+              { value: "C", label: "C. 决定整页背景是不是绿色" },
+            ],
+            correct: "B",
+            okText: "对。HTML 描述结构与内容占位。",
+            badText: "再想想：交互归 JS，颜色归 CSS。",
+          },
+        },
+        {
+          navTitle: "03 CSS 负责样式",
+          title: "CSS 负责样式",
+          oneLiner: "CSS 管颜色、字体、间距、圆角、按钮外观等「长什么样」。",
+          whyLearn: "会改样式，后面调组件、设计稿对齐才有抓手。",
+          paragraphs: [
+            "样式写在 **`style.css`**（或 `<style>` 内联，本关用外链文件）。",
+            "本关你会改 **背景色**、**卡片圆角**、**按钮大小或颜色**，保存后**刷新**浏览器即可看到变化。",
+          ],
+          myth: "误区：在 HTML 里堆满 `style=\"\"` 代替 CSS 文件。正解：本关练习用单独 `style.css` 体会分工。",
+          nextStep: "下一节：JavaScript 负责交互。",
+          exercise: {
+            type: "choice",
+            title: "想让整页背景变色，主要应改哪个文件？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. script.js" },
+              { value: "B", label: "B. style.css" },
+              { value: "C", label: "C. package.zip" },
+            ],
+            correct: "B",
+            okText: "对。整体视觉样式通常在 CSS。",
+            badText: "再想想三件套分工。",
+          },
+        },
+        {
+          navTitle: "04 JavaScript 负责交互",
+          title: "JavaScript 负责交互",
+          oneLiner: "JavaScript 让页面「响应」用户：例如点击按钮后改一句话。",
+          whyLearn: "没有交互直觉，后面事件、组件、状态会很难衔接。",
+          paragraphs: [
+            "本关 `script.js` 里只有**很少几行**：给按钮加点击，改页面上某段文字。",
+            "你**不需要**理解每一行语法，只要会改**字符串**并保存、刷新验证。",
+          ],
+          myth: "误区：以为必须先学完整 JS 才能改本关。正解：本关只改提示文字，建立「脚本能改页面」的信心即可。",
+          nextStep: "下一节：三文件如何协作。",
+          exercise: {
+            type: "choice",
+            title: "「点击按钮后文字变化」主要由谁负责？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 只由 HTML 负责" },
+              { value: "B", label: "B. 主要由 JavaScript 负责" },
+              { value: "C", label: "C. 只由 CSS 负责" },
+            ],
+            correct: "B",
+            okText: "对。交互逻辑一般在 JS。",
+            badText: "再想想：HTML 放按钮，JS 响应点击。",
+          },
+        },
+        {
+          navTitle: "05 三文件如何协作",
+          title: "一个网页通常由哪些文件组成",
+          oneLiner: "本关最小组合：`index.html` + `style.css` + `script.js`。",
+          whyLearn: "知道「谁引入谁」，以后加资源、排错路径才不乱。",
+          paragraphs: [
+            "`index.html` 里通过 `<link rel=\"stylesheet\" href=\"style.css\">` 引入样式。",
+            "通过 `<script src=\"script.js\"></script>` 引入脚本（通常放在 `</body>` 前）。",
+          ],
+          example: {
+            label: "引入关系（示意）",
+            text: "index.html 引用 style.css 与 script.js；浏览器打开 index.html 时会去加载同目录下的两个文件。",
+          },
+          myth: "误区：改完 CSS 却一直在看旧缓存。正解：保存后刷新，必要时强制刷新（Ctrl+F5）。",
+          nextStep: "下一节：保存与刷新流程。",
+          exercise: { type: "none", hint: "本节无在线题。动手在练习包里完成三文件修改。" },
+        },
+        {
+          navTitle: "06 保存与刷新",
+          title: "修改网页的正确流程",
+          oneLiner: "编辑器里改 → 保存 → 浏览器刷新，才能看到最新效果。",
+          whyLearn: "「我改了怎么没变」多数是没保存或没刷新。",
+          paragraphs: [
+            "每次改 `index.html` / `style.css` / `script.js` 后，**先保存**再回浏览器 **F5 / Ctrl+R** 刷新。",
+            "确认浏览器打开的是你正在编辑的那份文件路径（本地路径栏可见）。",
+          ],
+          myth: "误区：以为浏览器会自动同步编辑器内存。正解：必须保存写入磁盘，刷新才读新文件。",
+          nextStep: "下一节：在线小测。",
+          exercise: {
+            type: "shortText",
+            title: "用四个字描述改完网页后必做的动作之一",
+            desc: "提示：与键盘保存或浏览器有关。",
+            placeholder: "例如：保存刷新",
+            minLen: 2,
+            okText: "可以。核心是「保存」和「刷新」别忘了。",
+            badText: "再想想流程里的关键动作。",
+            keywordHint: "保存",
+          },
+        },
+        {
+          navTitle: "07 在线小测",
+          title: "在线小测：三件套分工",
+          oneLiner: "用选择题巩固 HTML / CSS / JS 各管什么。",
+          whyLearn: "分清职责，后面学 Vue 组件时才知道模板、样式、逻辑各放哪。",
+          paragraphs: [
+            "也可打开本关 **`demo/index.html`** 做卡片页自带的三道题（与下面题目类似）。",
+          ],
+          myth: "",
+          nextStep: "下一节：本关总结与本地实践。",
+          exercise: {
+            type: "choice",
+            title: "刷新浏览器主要是为了什么？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 自动安装 Node" },
+              { value: "B", label: "B. 让浏览器重新加载你保存后的文件内容" },
+              { value: "C", label: "C. 把网页上传到 Git" },
+            ],
+            correct: "B",
+            okText: "对。刷新重新读取磁盘上的 HTML/CSS/JS。",
+            badText: "本关不涉及 Node 与 Git。",
+          },
+        },
+        {
+          navTitle: "08 本关总结与实践",
+          title: "本关总结 + 本地实践入口",
+          oneLiner: "回顾三件套直觉，并在本地完成 index / style / script 的修改与截图。",
+          whyLearn: "动手保存一次，比看十遍概念更记得住。",
+          paragraphs: [
+            "**真正完成本关**要在本地 **`practice/starter/`** 按 **`START_HERE.html`** 修改 **`index.html`**、**`style.css`**、**`script.js`** 并填写 **`notes/task-note.txt`**，对照 **`checklist.md`**。下方卡片与页脚提供链接。",
+          ],
+          summaryPanels: [
+            {
+              type: "checklist",
+              title: "本关你学会了什么",
+              items: [
+                "**HTML** 描述网页 **结构**（标题、段落、按钮等）。",
+                "**CSS** 描述网页 **样式**（颜色、间距、圆角等）。",
+                "**JavaScript** 描述网页 **交互**（例如点击后改文字）。",
+                "**本地打开** `index.html` 即可预览；**保存 + 刷新** 才能看到最新效果。",
+                "本关**不**涉及 Vue、Node、npm、Django、HTTP API、Git。",
+              ],
+            },
+            {
+              type: "tags",
+              title: "关键概念",
+              tags: ["HTML", "CSS", "JavaScript", "index.html", "style.css", "script.js", "保存", "刷新"],
+            },
+            {
+              type: "checklist",
+              title: "你现在应该能做什么",
+              items: [
+                "能说出 **HTML / CSS / JS** 各自负责哪一类事。",
+                "能修改三文件并 **保存**，在浏览器 **刷新** 后看到结构与样式、按钮交互变化。",
+                "能按 **`checklist.md`** 准备截图与一句话总结。",
+              ],
+            },
+            {
+              type: "calloutMuted",
+              title: "常见错误回顾",
+              items: [
+                "改完 **没保存** 就刷新 → 先 **Ctrl+S / Cmd+S**。",
+                "浏览器仍像没变 → 确认是否保存了正确路径的文件，可试 **强制刷新**。",
+                "把 CSS 写进 JS 或搞混文件职责 → 对照本关三文件分工重来。",
+              ],
+            },
+            {
+              type: "next",
+              title: "下一步怎么做",
+              items: [
+                "完成 **`START_HERE.html`** 全部步骤并对照 **`checklist.md`** 提交。",
+                "然后进入 **第 04 关：Python 基础语法与数据结构**（规划中）。",
+              ],
+            },
+            {
+              type: "practice",
+              title: "本地实践入口",
+              lines: [
+                "打开 **`START_HERE.html`**；用浏览器打开 **`index.html`**；在编辑器中改 **`index.html`**、**`style.css`**、**`script.js`** 与 **`notes/task-note.txt`**，每次 **保存** 后 **刷新** 验证。",
+                "需要压缩包时优先 **本关 `package.zip`**；若暂时无法下载，请用 **整仓 ZIP** 进入本关 **`practice/starter/`**。",
+              ],
+              note: "解压后顶层目录为 **`level-03-html-css-js-starter/`**，详见下方蓝色提示框。",
+            },
+          ],
+          myth: "",
+          nextStep: "",
+          exercise: {
+            type: "none",
+            hint: "本节无在线题。动手请使用上方「本地实践入口」或底部「打开 START_HERE」「下载本关练习包」。",
+          },
+        },
+      ],
+    },
   ];
 
   /** 与仓库 `levels/` 规划一致；仅侧边栏预告，非可播放课程 */
   var PLANNED_ROADMAP = [
-    "第 03 关：HTML / CSS / JavaScript 基础",
     "第 04 关：Python 基础语法与数据结构",
     "第 05 关：HTTP / URL / 浏览器请求",
     "第 06 关：JSON / API / curl / requests",
@@ -1123,6 +1354,7 @@
       "00": "level-00-first-click-starter",
       "01": "level-01-python-cli-starter",
       "02": "level-02-editor-and-files-starter",
+      "03": "level-03-html-css-js-starter",
     };
     var folder = folderMap[c.id] || "level-starter";
     return (
