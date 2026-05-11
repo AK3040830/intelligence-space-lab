@@ -29,7 +29,7 @@ https://ak3040830.github.io/intelligence-space-lab/
 1. [在线训练营入口](https://ak3040830.github.io/intelligence-space-lab/) — 新人实际看到什么；  
 2. [`docs/00-overview/COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) — 课程路线与教学形态；  
 3. [`docs/00-overview/PUBLIC_LAB_AGENT_RULES.md`](docs/00-overview/PUBLIC_LAB_AGENT_RULES.md) — 公开仓边界与禁止项；  
-4. **当前已完成关卡：** `levels/00-first-click`、`levels/01-python-cli`（其余关卡见下表「规划中」）。
+4. **当前已完成关卡：** `levels/00-first-click`、`levels/01-python-cli`；**下一关骨架：** `levels/02-editor-and-files/`（见下表）。
 
 ## 如果你是 Agent / 协作者
 
@@ -44,11 +44,12 @@ https://ak3040830.github.io/intelligence-space-lab/
 
 | 关卡 | 状态 | 说明 |
 |------|------|------|
-| 第 00 关：第一次进入训练营 | 已完成 | 认识训练营、练习包和 START_HERE |
-| 第 01 关：Python 与命令行入门 | 已完成 | 认识 Python、终端、JSON 和本地验收 |
-| 第 02 关：文件、编辑器与练习包使用 | 规划中 | 后续补充 |
+| 第 00 关：第一次进入训练营 | 已完成 | `levels/00-first-click` |
+| 第 01 关：Python 与命令行入门 | 已完成 | `levels/01-python-cli` |
+| 第 02 关：文件、编辑器与练习包使用 | 规划中（下一关） | `levels/02-editor-and-files` 仅占位，待开发 |
+| 第 03–13 关 | 规划中 | 见 `levels/03-html-css-js/` … `levels/13-main-project-mapping/` 与 [`COURSE_DESIGN_STANDARD.md`](docs/00-overview/COURSE_DESIGN_STANDARD.md) |
 
-第 03 关及以后（`levels/03-…` 等）目录已预留，内容随迭代补充。
+完整顺序与依赖见规范文档中的 **推荐课程路线**。
 
 ## 仓库目录说明
 
