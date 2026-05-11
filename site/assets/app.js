@@ -637,6 +637,22 @@
     },
   ];
 
+  /** 与仓库 `levels/` 规划一致；仅侧边栏预告，非可播放课程 */
+  var PLANNED_ROADMAP = [
+    "第 02 关：文件、编辑器与练习包使用",
+    "第 03 关：HTML / CSS / JavaScript 基础",
+    "第 04 关：Python 基础语法与数据结构",
+    "第 05 关：HTTP / URL / 浏览器请求",
+    "第 06 关：JSON / API / curl / requests",
+    "第 07 关：Vue 前端基础",
+    "第 08 关：Django 后端基础",
+    "第 09 关：Redis / Celery / WebSocket",
+    "第 10 关：大模型 API / Ollama",
+    "第 11 关：FastAPI 模型服务",
+    "第 12 关：部署与协作",
+    "第 13 关：Intelligence Space 主项目映射",
+  ];
+
   var state = {
     courseIndex: 0,
     sectionIndex: 0,
@@ -741,6 +757,15 @@
       })
       .join("");
 
+    var roadmapHtml =
+      '<div class="sidebar-roadmap" aria-label="后续关卡规划">' +
+      '<div class="sidebar-course-title">后续关卡（规划）</div>' +
+      '<ol class="sidebar-roadmap-list">' +
+      PLANNED_ROADMAP.map(function (line) {
+        return "<li>" + escapeHtml(line) + "</li>";
+      }).join("") +
+      "</ol></div>";
+
     el.innerHTML =
       '<div class="sidebar-back"><button type="button" id="btn-catalog">返回课程目录</button></div>' +
       '<div class="sidebar-global-hint" role="note">学习建议：先在线看卡片和小测；需要动手时，再下载本关练习包。当前阶段也可以下载整仓 ZIP，进入对应关卡的 <code>practice/starter/</code> 练习。</div>' +
@@ -755,7 +780,8 @@
       "</div>" +
       '<ul class="nav-section">' +
       navHtml +
-      "</ul>";
+      "</ul>" +
+      roadmapHtml;
 
     document.getElementById("btn-catalog").addEventListener("click", function () {
       state.courseIndex = 0;

@@ -27,6 +27,35 @@
 - **路径目标**：对齐 **真实项目演进方式**——从登录注册、单表、接口，到异步任务与 WebSocket，再到模型服务、网络可达性、部署与协作，最后才收束到 **双仓库架构、adapter、extension、scheduler、Control Plane、新模型接入与 Agent 协作**。  
 - **非目标**：替代正式项目文档；在零基础前几关 **不** 把主仓库架构当作必读负担。
 
+### 推荐课程路线（`levels/` 关卡编号与依赖）
+
+仓库中 **`levels/`** 目录按下列 **编号顺序** 规划（与「多主线地图」一致；**第 00–01 关已实现**，其余为骨架目录，内容迭代填充）：
+
+| 编号 | `levels/` 目录 | 关名（工作标题） |
+|------|----------------|------------------|
+| 00 | `00-first-click` | 第一次进入训练营 |
+| 01 | `01-python-cli` | Python 与命令行入门 |
+| 02 | `02-editor-and-files` | 文件、编辑器与练习包使用 |
+| 03 | `03-html-css-js` | HTML / CSS / JavaScript 基础 |
+| 04 | `04-python-basics` | Python 基础语法与数据结构 |
+| 05 | `05-http-url-browser` | HTTP / URL / 浏览器请求 |
+| 06 | `06-json-api-curl` | JSON / API / curl / requests |
+| 07 | `07-vue-basic` | Vue 前端基础 |
+| 08 | `08-django-basic` | Django 后端基础 |
+| 09 | `09-async-realtime` | Redis / Celery / WebSocket |
+| 10 | `10-llm-api-ollama` | 大模型 API / Ollama |
+| 11 | `11-fastapi-model-service` | FastAPI 模型服务 |
+| 12 | `12-deploy-and-collaboration` | 部署与协作 |
+| 13 | `13-main-project-mapping` | Intelligence Space 主项目映射 |
+
+**依赖纪律（规划期即遵守，避免跳步）：**
+
+1. **不得**从「只学了 Python 或 HTTP」直接跳到 **主项目全景**；**第 13 关（主项目映射）必须后置**，且以 HTTP/API/前后端/异步/模型服务等直觉为前提。  
+2. **Vue（第 07 关）之前** 必须有 **HTML / CSS / JS 基础（第 03 关）**，避免无三件套直觉直接进框架。  
+3. **Django（第 08 关）之前** 必须有 **Python 基础（第 04 关）** 与 **HTTP / URL / 浏览器请求（第 05 关）**（必要时与第 06 关 JSON/API 衔接）。  
+4. **大模型 API / Ollama（第 10 关）之前** 必须有 **HTTP、API 与 JSON 基础（第 05–06 关）**，不得过早堆模型名词。  
+5. **主项目映射（第 13 关）** 放在 **部署与协作（第 12 关）** 之后或与其紧衔接，且仍为「综述 + 指向正式文档」，不可替代正式仓库说明。
+
 ---
 
 ## 3. 核心教学形态：卡片教程 + 本地练习包 + 验收清单
@@ -395,6 +424,8 @@ flowchart TB
 ## 20. Agent 生成课程时的硬性规则
 
 **安全前提（第 0 条）**：默认 **本仓库会被公开访问**。禁止提交密钥、真实服务器信息、生产连接串、私有源码、学生隐私等；不确定是否可公开时须停工并请人工确认。详见 **[`PUBLIC_LAB_AGENT_RULES.md`](PUBLIC_LAB_AGENT_RULES.md)**。
+
+**路线前提**：新建或调整关卡时，须符合 **第 2 节下「推荐课程路线」** 中的 **`levels/` 目录命名** 与 **依赖纪律**（主项目映射后置、Vue/Django/大模型前的前置关不得跳步）。
 
 1. **不能只写 README** 作为新人唯一教程；必须配合 **卡片 `demo/index.html`** 和/或 **`START_HERE.html`**。  
 2. **每一关**须有 **`demo/index.html`** 卡片教程（除非评审批准的极少数例外，且须在 PR 说明理由）。  
