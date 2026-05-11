@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intelligence Space Lab - 第 03 关</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --card: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #059669;
+      --accent-dim: #d1fae5;
+      --border: #e2e8f0;
+      --ok: #15803d;
+      --bad: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    h1 { font-size: 1.4rem; margin: 0 0 0.5rem; }
+    .lead { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.95rem; }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 560px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .concept-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      text-align: left;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .concept-card:hover, .concept-card:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(5, 150, 105, 0.12);
+    }
+    .concept-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+      color: var(--accent);
+    }
+    .concept-card .hint { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    .concept-card .detail {
+      display: none;
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.9rem;
+    }
+    .concept-card.open .detail { display: block; }
+    .concept-card.open { border-color: var(--accent); }
+    .detail p { margin: 0.4rem 0; }
+    .detail .tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: #047857;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      margin-top: 0.35rem;
+    }
+    .quiz-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .quiz-box h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+    .q { margin: 1rem 0 0.35rem; font-weight: 600; font-size: 0.95rem; }
+    .opts label {
+      display: block;
+      padding: 0.45rem 0.6rem;
+      margin: 0.35rem 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .opts label:hover { background: #f8fafc; }
+    .btn {
+      display: inline-block;
+      padding: 0.55rem 1rem;
+      margin-top: 0.35rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .fb { margin-top: 0.45rem; font-size: 0.88rem; min-height: 1.2em; }
+    .fb.ok { color: var(--ok); }
+    .fb.bad { color: var(--bad); }
+    .download-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .btn-link {
+      display: inline-block;
+      padding: 0.65rem 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .note { font-size: 0.88rem; color: var(--muted); margin: 0.75rem 0 0; }
+    .done-box {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .done-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .done-box ul { margin: 0.35rem 0 0; padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Intelligence Space Lab - 第 03 关</h1>
+    <p class="lead">
+      本关建立<strong>网页三件套</strong>的第一层直觉：<strong>HTML 结构、CSS 样式、JavaScript 交互</strong>。不教 Vue、Node、HTTP、Git。下面卡片可点开阅读；底部有在线小测与练习包下载。
+    </p>
+
+    <div class="grid" id="cards">
+      <button type="button" class="concept-card" data-card="0" aria-expanded="false">
+        <h2>1. 网页是什么？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>你在浏览器里看到的一「页」，背后常常是 HTML + CSS + JS 一起工作的结果。</p>
+          <p><strong>本关练习：</strong>你会改本地的 <code>index.html</code>，并用浏览器打开它。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="1" aria-expanded="false">
+        <h2>2. HTML 负责结构</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>标题在第几级、段落、按钮放哪里，都由 <strong>HTML 标签</strong>描述，好比房子的<strong>骨架与房间布局</strong>。</p>
+          <p><span class="tag">例子</span> <code>&lt;h1&gt;</code> 标题、<code>&lt;p&gt;</code> 段落、<code>&lt;button&gt;</code> 按钮。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="2" aria-expanded="false">
+        <h2>3. CSS 负责样式</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>颜色、字体大小、间距、圆角、按钮长什么样，通常写在 <strong>style.css</strong> 里，好比给房子<strong>刷漆、装灯</strong>。</p>
+          <p><span class="tag">本关</span> 改背景色、圆角，保存后<strong>刷新</strong>即可看到变化。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="3" aria-expanded="false">
+        <h2>4. JavaScript 负责交互</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>点击按钮后文字变化、菜单展开等「会动」的逻辑，一般由 <strong>script.js</strong> 里的代码完成。</p>
+          <p><span class="tag">注意</span> 本关只改<strong>一行提示文字</strong>，不要求你理解全部语法。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="4" aria-expanded="false">
+        <h2>5. 一个网页通常由哪些文件组成？</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>本关最小例子：<code>index.html</code>（结构 + 引入外链）、<code>style.css</code>（样式）、<code>script.js</code>（交互）。</p>
+          <p>浏览器打开 <code>index.html</code> 时，会按其中的 <code>&lt;link&gt;</code> 与 <code>&lt;script src&gt;</code> 去加载另外两个文件。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="5" aria-expanded="false">
+        <h2>6. 正确流程：打开 → 修改 → 保存 → 刷新</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>用<strong>编辑器</strong>改文件 → <strong>Ctrl+S / Cmd+S 保存</strong> → 回到浏览器<strong>刷新</strong>（F5）。</p>
+          <p><strong>不保存就刷新</strong>，多半还是旧页面——这是新人最高频的困惑之一。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="6" aria-expanded="false">
+        <h2>7. 在线小测说明</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>下面有三道选择题，用来检查你是否把三个角色分清楚。答错可以重选。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="7" aria-expanded="false">
+        <h2>8. 本关总结与本地实践入口</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>在线看完卡片后，请下载练习包（或从整仓进入 <code>starter</code>），打开 <code>START_HERE.html</code>，按步骤改三个文件并保存、刷新。</p>
+          <p><span class="tag">记住</span> 只看网页、不保存文件，不算完成本关。</p>
+        </div>
+      </button>
+    </div>
+
+    <div class="quiz-box">
+      <h3>在线小测</h3>
+
+      <div class="q">Q1：下面哪一项最像「HTML 的职责」？</div>
+      <div class="opts">
+        <label><input type="radio" name="q1" value="A" /> A. 决定按钮点击后显示什么文字</label>
+        <label><input type="radio" name="q1" value="B" /> B. 描述标题、段落、按钮在页面上的结构</label>
+        <label><input type="radio" name="q1" value="C" /> C. 决定背景颜色和圆角</label>
+      </div>
+      <button type="button" class="btn" data-check="q1">检查 Q1</button>
+      <p class="fb" id="fb1"></p>
+
+      <div class="q">Q2：改完 CSS 后，为什么通常要刷新浏览器？</div>
+      <div class="opts">
+        <label><input type="radio" name="q2" value="A" /> A. 因为 CSS 会自动上传服务器</label>
+        <label><input type="radio" name="q2" value="B" /> B. 让浏览器重新读取你保存后的样式文件</label>
+        <label><input type="radio" name="q2" value="C" /> C. 因为不刷新就无法保存文件</label>
+      </div>
+      <button type="button" class="btn" data-check="q2">检查 Q2</button>
+      <p class="fb" id="fb2"></p>
+
+      <div class="q">Q3：下面哪一项最像「JavaScript 的职责」？</div>
+      <div class="opts">
+        <label><input type="radio" name="q3" value="A" /> A. 给整页设置统一的背景色</label>
+        <label><input type="radio" name="q3" value="B" /> B. 写网页最外层的标题字号</label>
+        <label><input type="radio" name="q3" value="C" /> C. 在用户点击按钮时改变页面上的文字</label>
+      </div>
+      <button type="button" class="btn" data-check="q3">检查 Q3</button>
+      <p class="fb" id="fb3"></p>
+    </div>
+
+    <div class="download-box">
+      <h3>下载本关练习包</h3>
+      <p style="margin: 0 0 0.75rem; font-size: 0.92rem;">
+        若在整仓中学习，可直接打开
+        <code>levels/03-html-css-js/practice/starter/index.html</code>。
+      </p>
+      <a class="btn-link" href="../practice/package.zip" download>下载 package.zip</a>
+      <p class="note">若链接暂时无效，请用整仓 ZIP 进入上述路径。</p>
+    </div>
+
+    <div class="done-box">
+      <h3>接下来</h3>
+      <ul>
+        <li>完成 <code>START_HERE.html</code> 中的动手步骤；</li>
+        <li>对照 <code>checklist.md</code> 准备截图与一句话总结。</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".concept-card").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var open = el.classList.toggle("open");
+        el.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    });
+    var answers = { q1: "B", q2: "B", q3: "C" };
+    document.querySelectorAll("[data-check]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-check");
+        var sel = document.querySelector('input[name="' + id + '"]:checked');
+        var fb = document.getElementById(id === "q1" ? "fb1" : id === "q2" ? "fb2" : "fb3");
+        if (!sel) {
+          fb.className = "fb bad";
+          fb.textContent = "请先选一个选项。";
+          return;
+        }
+        var ok = sel.value === answers[id];
+        fb.className = "fb " + (ok ? "ok" : "bad");
+        fb.textContent = ok ? "正确。" : "再想想看卡片里的说明。";
+      });
+    });
+  </script>
+</body>
+</html>
