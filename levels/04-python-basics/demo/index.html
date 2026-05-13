@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intelligence Space Lab - 第 04 关</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --card: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #0d9488;
+      --accent-dim: #ccfbf1;
+      --border: #e2e8f0;
+      --ok: #15803d;
+      --bad: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    h1 { font-size: 1.4rem; margin: 0 0 0.5rem; }
+    .lead { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.95rem; }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 560px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .concept-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      text-align: left;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .concept-card:hover, .concept-card:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(13, 148, 136, 0.12);
+    }
+    .concept-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+      color: var(--accent);
+    }
+    .concept-card .hint { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    .concept-card .detail {
+      display: none;
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.9rem;
+    }
+    .concept-card.open .detail { display: block; }
+    .concept-card.open { border-color: var(--accent); }
+    .detail p { margin: 0.4rem 0; }
+    .detail code { background: #f1f5f9; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.88em; }
+    .detail .tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: #0f766e;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      margin-top: 0.35rem;
+    }
+    .quiz-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .quiz-box h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+    .q { margin: 1rem 0 0.35rem; font-weight: 600; font-size: 0.95rem; }
+    .opts label {
+      display: block;
+      padding: 0.45rem 0.6rem;
+      margin: 0.35rem 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .opts label:hover { background: #f8fafc; }
+    .btn {
+      display: inline-block;
+      padding: 0.55rem 1rem;
+      margin-top: 0.35rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .fb { margin-top: 0.45rem; font-size: 0.88rem; min-height: 1.2em; }
+    .fb.ok { color: var(--ok); }
+    .fb.bad { color: var(--bad); }
+    .download-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .btn-link {
+      display: inline-block;
+      padding: 0.65rem 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .note { font-size: 0.88rem; color: var(--muted); margin: 0.75rem 0 0; }
+    .done-box {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .done-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .done-box ul { margin: 0.35rem 0 0; padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Intelligence Space Lab - 第 04 关</h1>
+    <p class="lead">
+      本关只建立最薄的 <strong>Python 语法直觉</strong>：<strong>print、变量、字符串与数字、list、dict、if、for、简单函数、运行 .py 文件</strong>。
+      不教 HTTP、API、requests、Django、Vue、数据库。卡片可点开阅读；底部小测在浏览器里作答（<strong>不运行真实 Python</strong>）；真正跑代码在练习包。
+    </p>
+
+    <div class="grid" id="cards">
+      <button type="button" class="concept-card" data-card="0" aria-expanded="false">
+        <h2>1. Python 代码从哪里开始</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>一句话：</strong>你把代码写在扩展名为 <code>.py</code> 的文本文件里，用安装好的 <strong>Python 解释器</strong>在终端执行。</p>
+          <p><span class="tag">记住</span> 浏览器里的本页<strong>不会</strong>替你执行练习包里的 Python；练习必须在本地终端完成。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="1" aria-expanded="false">
+        <h2>2. print 和变量</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><code>print(...)</code> 用来把内容<strong>显示在终端</strong>。</p>
+          <p><strong>变量</strong>像一个便利贴名字：<code>name = "Ada"</code> 之后，可以用 <code>name</code> 取出这段文字。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="2" aria-expanded="false">
+        <h2>3. 字符串和数字</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>字符串</strong>通常用引号包起来，例如 <code>"hello"</code>；<strong>数字</strong>直接写 <code>18</code>、<code>3.14</code>。</p>
+          <p>拼接时常常要把数字转成字符串（<code>str(age)</code>），或使用 <strong>f-string</strong>：<code>f"我今年 {age} 岁"</code>。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="3" aria-expanded="false">
+        <h2>4. list 列表</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>列表用方括号 <code>[ ]</code>，里面是一串<strong>有序</strong>的值，适合放「很多同类项」：技能、步骤、待办标题……</p>
+          <p><span class="tag">例子</span> <code>skills = ["读文档", "写脚本"]</code></p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="4" aria-expanded="false">
+        <h2>5. dict 字典</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>字典用花括号 <code>{ }</code>，里面是 <strong>键: 值</strong> 对，适合描述「同一张卡片上的多个字段」，例如状态、进度、提示语。</p>
+          <p><span class="tag">注意</span> 本关只用字典建立直觉，不讲正式项目里的任务系统。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="5" aria-expanded="false">
+        <h2>6. if 判断</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><code>if</code> 让程序<strong>按条件分支</strong>：条件成立走一块代码，否则可走 <code>else</code> 另一块。</p>
+          <p>适合「分数是否及格」「状态是否完成」这类<strong>非此即彼或多种情况</strong>的判断。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="6" aria-expanded="false">
+        <h2>7. for 循环和函数</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><code>for 项 in 列表:</code> 会对列表里<strong>每一项</strong>重复执行一段代码，适合打印清单、逐个处理。</p>
+          <p><strong>函数</strong>把一小段逻辑包起来：<code>def 名字(参数):</code> 里写步骤，可用 <code>return</code> 返回一句话给调用方。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="7" aria-expanded="false">
+        <h2>8. 本关总结与本地实践入口</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>在线看完卡片与小测后，请下载练习包（或从整仓进入 <code>starter</code>），打开 <code>START_HERE.html</code>，在终端里依次运行四个 <code>.py</code>，并<strong>至少改两个文件再运行</strong>。</p>
+          <p><span class="tag">记住</span> 本关不是完整 Python 课，只为后续能读懂示例里的基础写法。</p>
+        </div>
+      </button>
+    </div>
+
+    <div class="quiz-box">
+      <h3>在线小测</h3>
+
+      <div class="q">Q1：<code>print("hello")</code> 会做什么？</div>
+      <div class="opts">
+        <label><input type="radio" name="q1" value="A" /> A. 在终端输出一行文字（示意：hello）</label>
+        <label><input type="radio" name="q1" value="B" /> B. 自动安装 Python 库</label>
+        <label><input type="radio" name="q1" value="C" /> C. 把网页变成绿色</label>
+      </div>
+      <button type="button" class="btn" data-check="q1">检查 Q1</button>
+      <p class="fb" id="fb1"></p>
+
+      <div class="q">Q2：列表（list）和字典（dict）的主要区别，哪一项更贴切？</div>
+      <div class="opts">
+        <label><input type="radio" name="q2" value="A" /> A. 列表用方括号保存有序的一串值；字典用花括号保存「键到值」的映射</label>
+        <label><input type="radio" name="q2" value="B" /> B. 列表和字典完全一样，只是括号形状不同</label>
+        <label><input type="radio" name="q2" value="C" /> C. 字典只能保存数字，不能保存文字</label>
+      </div>
+      <button type="button" class="btn" data-check="q2">检查 Q2</button>
+      <p class="fb" id="fb2"></p>
+
+      <div class="q">Q3：<code>if</code> 判断更适合解决哪类问题？</div>
+      <div class="opts">
+        <label><input type="radio" name="q3" value="A" /> A. 根据条件是否成立，走不同的代码分支</label>
+        <label><input type="radio" name="q3" value="B" /> B. 把同一个文件复制一百份</label>
+        <label><input type="radio" name="q3" value="C" /> C. 给网页自动选字体颜色（本关不涉及）</label>
+      </div>
+      <button type="button" class="btn" data-check="q3">检查 Q3</button>
+      <p class="fb" id="fb3"></p>
+
+      <div class="q">Q4：<code>for</code> 循环更适合解决哪类问题？</div>
+      <div class="opts">
+        <label><input type="radio" name="q4" value="A" /> A. 对序列里的每一项重复执行同一段逻辑（例如逐行打印清单）</label>
+        <label><input type="radio" name="q4" value="B" /> B. 一次性声明全局变量，以后再也不用写代码</label>
+        <label><input type="radio" name="q4" value="C" /> C. 把 Python 代码编译成图片</label>
+      </div>
+      <button type="button" class="btn" data-check="q4">检查 Q4</button>
+      <p class="fb" id="fb4"></p>
+    </div>
+
+    <div class="download-box">
+      <h3>下载本关练习包</h3>
+      <p style="margin: 0 0 0.75rem; font-size: 0.92rem;">
+        若在整仓中学习，可直接打开
+        <code>levels/04-python-basics/practice/starter/START_HERE.html</code>。
+      </p>
+      <a class="btn-link" href="../practice/package.zip" download>下载 package.zip</a>
+      <p class="note">若链接暂时无效，请用整仓 ZIP 进入上述路径。解压后顶层文件夹为 <code>level-04-python-basics-starter/</code>。</p>
+    </div>
+
+    <div class="done-box">
+      <h3>接下来</h3>
+      <ul>
+        <li>完成 <code>START_HERE.html</code> 中的终端步骤；</li>
+        <li>对照 <code>checklist.md</code> 准备截图与一句话总结。</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".concept-card").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var open = el.classList.toggle("open");
+        el.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    });
+    var answers = { q1: "A", q2: "A", q3: "A", q4: "A" };
+    var fbIds = { q1: "fb1", q2: "fb2", q3: "fb3", q4: "fb4" };
+    document.querySelectorAll("[data-check]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-check");
+        var sel = document.querySelector('input[name="' + id + '"]:checked');
+        var fb = document.getElementById(fbIds[id]);
+        if (!sel) {
+          fb.className = "fb bad";
+          fb.textContent = "请先选一个选项。";
+          return;
+        }
+        var ok = sel.value === answers[id];
+        fb.className = "fb " + (ok ? "ok" : "bad");
+        fb.textContent = ok ? "正确。" : "再想想看卡片里的说明。";
+      });
+    });
+  </script>
+</body>
+</html>
