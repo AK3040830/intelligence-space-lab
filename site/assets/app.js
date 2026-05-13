@@ -1075,7 +1075,7 @@
               title: "下一步怎么做",
               items: [
                 "完成 **`START_HERE.html`** 全部步骤并对照 **`checklist.md`** 提交。",
-                "然后进入 **第 04 关：Python 基础语法与数据结构**（规划中）。",
+                "然后进入 **第 04 关：Python 基础语法与数据结构**（见在线训练营播放器）。",
               ],
             },
             {
@@ -1097,11 +1097,285 @@
         },
       ],
     },
+{
+      id: "04",
+      title: "第 04 关：Python 基础语法与数据结构",
+      cardTutorialUrl: "../levels/04-python-basics/demo/index.html",
+      startHereUrl: "../levels/04-python-basics/practice/starter/START_HERE.html",
+      packageZipUrl: "../levels/04-python-basics/practice/package.zip",
+      sections: [
+        {
+          navTitle: "01 Python 代码从哪里开始",
+          title: "Python 代码从哪里开始",
+          oneLiner: "代码写在 .py 文件里，由本机安装的 Python 解释器在终端执行。",
+          whyLearn: "先分清「写在文件里」和「在终端运行」，后面每一关跑脚本才不会懵。",
+          paragraphs: [
+            "本关练习文件是 **`01_print_and_variables.py`** 等；双击往往只会用编辑器打开，**不会自动当程序跑**。",
+            "推荐流程：编辑器改代码并 **保存** → 终端 **`cd`** 到 **`starter`** → 输入 **`python 文件名.py`**（或 **`python3` / Windows `py`**）。",
+          ],
+          example: {
+            label: "运行示意（命令行）",
+            code: "cd …/practice/starter\npython 01_print_and_variables.py",
+          },
+          myth: "误区：以为浏览器播放器能替你完成本关 Python 运行。正解：在练习包目录里用终端真实执行。",
+          nextStep: "下一节：print 与变量。",
+          exercise: {
+            type: "choice",
+            title: "谁负责执行 .py 文件里的代码？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 浏览器" },
+              { value: "B", label: "B. 本机的 Python 解释器（在终端里运行）" },
+              { value: "C", label: "C. 资源管理器的缩略图预览" },
+            ],
+            correct: "B",
+            okText: "对。解释器读取 .py 文本并从上到下执行。",
+            badText: "再想想：第 01 关也强调终端与解释器。",
+          },
+        },
+        {
+          navTitle: "02 print 和变量",
+          title: "print 和变量",
+          oneLiner: "`print` 把内容显示在终端；变量是给值起的名字。",
+          whyLearn: "后续脚本里最常见的两行就是赋值与打印；先对齐这两个词。",
+          paragraphs: [
+            "**`print(...)`** 会在终端输出一段文字或变量的内容。",
+            "**变量**像便利贴：`name = \"Ada\"` 之后，可以用 **`name`** 取出这段字符串。",
+          ],
+          example: {
+            label: "示例（阅读）",
+            code: 'who = "learner"\nprint(who)',
+          },
+          myth: "误区：以为 `print` 会修改文件。正解：`print` 只影响终端输出，除非你自己写代码去改文件。",
+          nextStep: "下一节：字符串与数字。",
+          exercise: {
+            type: "choice",
+            title: "Q1：`print(\"hello\")` 会做什么？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 在终端输出一行文字（例如 hello）" },
+              { value: "B", label: "B. 自动安装第三方库" },
+              { value: "C", label: "C. 把网页背景变成绿色" },
+            ],
+            correct: "A",
+            okText: "对。`print` 用来输出到终端（本页小测不运行真实 Python）。",
+            badText: "再想想：`print` 的核心作用是输出可见文字。",
+          },
+        },
+        {
+          navTitle: "03 字符串和数字",
+          title: "字符串和数字",
+          oneLiner: "字符串多用引号包裹；数字直接写；拼接时要注意类型。",
+          whyLearn: "后面看 JSON、进度、计数时，会不断遇到「这是文字还是数字」。",
+          paragraphs: [
+            "**字符串**常用英文双引号：`\"hello\"`；**数字**如 **`18`**、**`0.6`** 不需要引号。",
+            "想把数字嵌进句子里，可以用 **`str(age)`** 转字符串，或使用 **f-string**：**`f\"我今年 {age} 岁\"`**。",
+          ],
+          myth: "误区：把数字也加引号当「更保险」。正解：加引号就变成字符串，数学比较可能不符合预期。",
+          nextStep: "下一节：list。",
+          exercise: {
+            type: "choice",
+            title: "下面哪一句更像「把数字存成数值类型」？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. score = 80" },
+              { value: "B", label: "B. score = \"80\"" },
+              { value: "C", label: "C. score = hello" },
+            ],
+            correct: "A",
+            okText: "对。没有引号的数字字面量通常是数值类型。",
+            badText: "再想想：引号在 Python 里常常表示字符串。",
+          },
+        },
+        {
+          navTitle: "04 list 列表",
+          title: "list 列表",
+          oneLiner: "列表用方括号，装一串有序的值。",
+          whyLearn: "配置项、结果列表、步骤清单，在后端与脚本里非常常见。",
+          paragraphs: [
+            "列表写法：**`items = [\"读文档\", \"写脚本\"]`**。",
+            "**`for x in items:`** 可以逐个处理列表里的元素（下一关会再练）。",
+          ],
+          example: {
+            label: "列表示意",
+            code: 'skills = ["终端", "保存文件", "print"]\nprint(skills[0])',
+          },
+          myth: "误区：把列表当成「只能装两个东西」。正解：长度可变，按业务增减。",
+          nextStep: "下一节：dict。",
+          exercise: {
+            type: "choice",
+            title: "下面哪一段更像「创建一个列表」？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. tags = [\"a\", \"b\"]" },
+              { value: "B", label: "B. tags = {\"a\": 1, \"b\": 2}" },
+              { value: "C", label: "C. tags = (\"a\" \"b\")" },
+            ],
+            correct: "A",
+            okText: "对。方括号最像「排成一队的列表」。",
+            badText: "再想想：花括号更像键值对的字典。",
+          },
+        },
+        {
+          navTitle: "05 dict 字典",
+          title: "dict 字典",
+          oneLiner: "字典用花括号，里面是键到值的映射。",
+          whyLearn: "接口与任务状态常以「字段名 → 字段值」出现，和字典直觉一致。",
+          paragraphs: [
+            "字典写法：**`task = {\"status\": \"todo\", \"progress\": 0.2}`**。",
+            "读取字段常用：**`task[\"status\"]`**（键名要加引号，且拼写一致）。",
+          ],
+          example: {
+            label: "字典示意",
+            code: 'task = {"status": "running", "progress": 0.6}\nprint(task["progress"])',
+          },
+          myth: "误区：把正式项目的任务系统当成必须背下来的框架。正解：本关只练「字段卡片」的读写直觉。",
+          nextStep: "下一节：if。",
+          exercise: {
+            type: "choice",
+            title: "Q2：列表和字典有什么主要区别？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 列表更像有序的一串值；字典更像「键 → 值」的查询表" },
+              { value: "B", label: "B. 列表和字典完全一样，只是括号不同" },
+              { value: "C", label: "C. 字典不能保存字符串" },
+            ],
+            correct: "A",
+            okText: "对。一个偏「排队」，一个偏「按名字取格子」。",
+            badText: "再对照卡片：方括号列表 vs 花括号键值。",
+          },
+        },
+        {
+          navTitle: "06 if 判断",
+          title: "if 判断",
+          oneLiner: "`if` 让程序按条件走不同分支。",
+          whyLearn: "脚本里大量「如果满足某条件就打印警告 / 继续 / 退出」的逻辑都从这里开始。",
+          paragraphs: [
+            "常见结构：**`if 条件:`** 下一行缩进执行；可用 **`else:`** 处理「否则」。",
+            "比较运算符如 **`>=`**、**`==`** 很常用：**`==`** 表示「是否相等」，不要和赋值 **`=`** 混淆。",
+          ],
+          myth: "误区：缩进随便空格。正解：Python 用缩进区分代码块，打乱会 `IndentationError`。",
+          nextStep: "下一节：for 与函数。",
+          exercise: {
+            type: "choice",
+            title: "Q3：`if` 判断更适合解决什么问题？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 根据条件是否成立，执行不同的代码路径" },
+              { value: "B", label: "B. 把同一个变量名在文件里复制一千次" },
+              { value: "C", label: "C. 自动生成网页 CSS（本关不涉及）" },
+            ],
+            correct: "A",
+            okText: "对。`if` 的核心就是条件分支。",
+            badText: "再想想：分支 vs 重复 vs 样式。",
+          },
+        },
+        {
+          navTitle: "07 for 循环和函数",
+          title: "for 循环和函数",
+          oneLiner: "`for` 用来按顺序处理序列；函数用来把一小段逻辑打包复用。",
+          whyLearn: "读懂 `for` 和最小的 `def`，你就能扫过大部分示例脚本的外层结构。",
+          paragraphs: [
+            "**`for item in items:`** 会对列表中每一项执行循环体（注意缩进）。",
+            "**`def greet(name):`** 定义函数；**`return`** 可以把结果传回调用处。",
+          ],
+          example: {
+            label: "函数示意（阅读）",
+            code: 'def line(n):\n    return "step " + str(n)\n\nprint(line(1))',
+          },
+          myth: "误区：一上来就写很复杂的函数参数。正解：本关只练「传入名字 → 返回一句提示」。",
+          nextStep: "下一节：本关总结与实践入口。",
+          exercise: {
+            type: "choice",
+            title: "Q4：`for` 循环更适合解决什么问题？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 对序列里的每一项重复执行同一段逻辑" },
+              { value: "B", label: "B. 一次性把 Python 安装到服务器（不准确）" },
+              { value: "C", label: "C. 把图片自动转换成声音（本关不涉及）" },
+            ],
+            correct: "A",
+            okText: "对。循环的核心是「重复处理多项」。",
+            badText: "再想想：循环 vs 安装 vs 无关选项。",
+          },
+        },
+        {
+          navTitle: "08 本关总结与实践",
+          title: "本关总结 + 本地实践入口",
+          oneLiner: "回顾最小 Python 语法点，并在 starter 里真实运行四个脚本。",
+          whyLearn: "建立「能改、能跑、能对照输出」的信心，为 HTTP 与后端示例阅读打底。",
+          paragraphs: [
+            "以下总结对应在线读完的各节；**真正跑 Python** 在 **`practice/starter/`** 完成。**只看网页不算完成**：请至少修改并保存 **2 个** `.py` 文件，并填写 **`notes/task-note.txt`**。",
+          ],
+          summaryPanels: [
+            {
+              type: "checklist",
+              title: "本关你学会了什么",
+              items: [
+                "**`.py` 文件** 由 **Python 解释器** 在 **终端** 中运行（`python` / `python3` / Windows `py`）。",
+                "**`print`** 用于在终端输出；**变量**用于给值起名。",
+                "**字符串** 与 **数字** 的区别，以及用 **f-string** 或 **`str(...)`** 拼接的常见思路。",
+                "**`list`**：方括号 **`[ ]`**，有序的一串值。",
+                "**`dict`**：花括号 **`{ }`**，**键 → 值** 映射。",
+                "**`if` / `else`**：条件分支；注意 **`==`** 与 **`=`** 不同。",
+                "**`for ... in ...`**：遍历序列；**`def` / `return`**：定义与返回简单函数。",
+                "**本关不是完整 Python 教程**，只为后续能读懂 **HTTP、API、Django、脚本与任务状态** 里的基础代码片段。",
+              ],
+            },
+            {
+              type: "tags",
+              title: "关键概念",
+              tags: ["print", "变量", "字符串", "数字", "list", "dict", "if", "for", "def", "starter", "终端"],
+            },
+            {
+              type: "checklist",
+              title: "你现在应该能做什么",
+              items: [
+                "在 **`starter`** 下运行 **`python 01_print_and_variables.py`** … **`04_function.py`**。",
+                "能修改 **`name` / `age` / `goal`**、列表与字典字段、**`score` 或 `status`**、以及函数传入参数，并看到输出变化。",
+                "能对照 **`checklist.md`** 与 **`exercises.md`** 准备截图与一句话总结。",
+              ],
+            },
+            {
+              type: "calloutMuted",
+              title: "常见错误回顾",
+              items: [
+                "终端 **当前目录** 不在 **`starter`** → 先用 **`cd`** 进入再运行。",
+                "改代码 **没保存** 就运行 → 先 **Ctrl+S / Cmd+S**。",
+                "引号、括号、缩进写坏 → 从报错行向上检查；必要时对照 ZIP 原始文件恢复。",
+              ],
+            },
+            {
+              type: "next",
+              title: "下一步怎么做",
+              items: [
+                "完成 **`START_HERE.html`** 与 **`checklist.md`** 中的动手与自检。",
+                "然后进入 **第 05 关：HTTP / URL / 浏览器请求**（见课程播放器「后续关卡」预告）。",
+              ],
+            },
+            {
+              type: "practice",
+              title: "本地实践入口",
+              lines: [
+                "打开 **`START_HERE.html`**：依次运行 **`01_print_and_variables.py`** 到 **`04_function.py`**，**至少修改 2 个** Python 文件并保存，再运行观察输出。",
+                "需要压缩包时优先 **本关 `package.zip`**；若暂时无法下载，请用 **整仓 ZIP** 进入本关 **`practice/starter/`**。",
+              ],
+              note: "解压后顶层目录为 **`level-04-python-basics-starter/`**，详见下方蓝色提示框。",
+            },
+          ],
+          myth: "",
+          nextStep: "",
+          exercise: {
+            type: "none",
+            hint: "本节无在线题。动手请使用上方「本地实践入口」或底部「打开 START_HERE」「下载本关练习包」。",
+          },
+        },
+      ],
+    },
   ];
 
   /** 与仓库 `levels/` 规划一致；仅侧边栏预告，非可播放课程 */
   var PLANNED_ROADMAP = [
-    "第 04 关：Python 基础语法与数据结构",
     "第 05 关：HTTP / URL / 浏览器请求",
     "第 06 关：JSON / API / curl / requests",
     "第 07 关：Vue 前端基础",
@@ -1355,6 +1629,7 @@
       "01": "level-01-python-cli-starter",
       "02": "level-02-editor-and-files-starter",
       "03": "level-03-html-css-js-starter",
+      "04": "level-04-python-basics-starter",
     };
     var folder = folderMap[c.id] || "level-starter";
     return (

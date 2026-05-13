@@ -23,6 +23,9 @@ REQUIRED = [
     "levels/03-html-css-js/demo/index.html",
     "levels/03-html-css-js/practice/starter/START_HERE.html",
     "levels/03-html-css-js/practice/package.zip",
+    "levels/04-python-basics/demo/index.html",
+    "levels/04-python-basics/practice/starter/START_HERE.html",
+    "levels/04-python-basics/practice/package.zip",
 ]
 
 

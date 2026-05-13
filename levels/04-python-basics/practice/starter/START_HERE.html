@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第 04 关练习包 · 从这里开始</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 2.5rem;
+      line-height: 1.75;
+      color: #1e293b;
+      background: #fafafa;
+    }
+    h1 { font-size: 1.3rem; margin: 0 0 0.5rem; color: #0f766e; }
+    h2 { font-size: 1.05rem; margin-top: 1.5rem; color: #0d9488; }
+    code, .path {
+      background: #e2e8f0;
+      padding: 0.12rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    ol.steps { padding-left: 1.25rem; }
+    ol.steps li { margin: 0.55rem 0; }
+    .warn {
+      background: #fef3c7;
+      border-left: 4px solid #d97706;
+      padding: 0.85rem 1rem;
+      margin: 1.1rem 0;
+      font-size: 0.95rem;
+    }
+    .critical {
+      background: #fee2e2;
+      border-left: 4px solid #dc2626;
+      padding: 0.85rem 1rem;
+      margin: 1.1rem 0;
+      font-size: 0.95rem;
+    }
+    .ok {
+      background: #ecfdf5;
+      border-left: 4px solid #059669;
+      padding: 0.85rem 1rem;
+      margin: 1.1rem 0;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>第 04 关：本地练习（Python 基础语法）</h1>
+  <p>本页假设你已经完成<strong>第 01 关</strong>（会在终端里 <code>cd</code>、用 <code>python</code> 跑脚本）与<strong>第 02 关</strong>（会用编辑器打开文件夹、保存文件）。</p>
+  <p>本关<strong>不要求</strong> Git、HTTP、安装第三方库。</p>
+
+  <div class="critical">
+    <strong>只看网页不算完成。</strong>你必须在本地<strong>真的运行</strong>下面的 Python 文件，并<strong>至少修改并保存 2 个</strong> <code>.py</code> 文件后再次运行，看到输出变化。然后再填写 <code>notes/task-note.txt</code>。
+  </div>
+
+  <div class="warn">
+    <strong>Windows 提示：</strong>若终端里输入 <code>python</code> 提示找不到命令，可尝试 <code>py 01_print_and_variables.py</code> 或 <code>python3 …</code>（视你本机安装而定）。
+  </div>
+
+  <h2>1. 打开 starter 文件夹</h2>
+  <p>确认你在本关的 <span class="path">starter</span> 目录里（来自 <code>package.zip</code> 解压后的 <code>level-04-python-basics-starter/</code>，或整仓里的 <code>levels/04-python-basics/practice/starter/</code>）。应能看到四个 <code>.py</code> 文件与 <code>notes/</code>。</p>
+
+  <h2>2. 用编辑器打开整个 starter 文件夹</h2>
+  <p>VS Code / Cursor：「文件」→「打开文件夹…」→ 选中<strong>整个</strong> <code>starter</code>。左侧应列出 <code>01_print_and_variables.py</code> 等。</p>
+
+  <h2>3. 打开终端，并进入 starter</h2>
+  <ol class="steps">
+    <li>打开终端（PowerShell、Terminal 等）。</li>
+    <li>使用 <code>cd</code> 进入本文件夹（与 <code>START_HERE.html</code> 同级）。可用 <code>pwd</code>（Linux/macOS）或 <code>cd</code>（Windows）确认当前路径。</li>
+  </ol>
+
+  <h2>4. 运行第一个脚本</h2>
+  <ol class="steps">
+    <li>执行：<code>python 01_print_and_variables.py</code></li>
+    <li>在编辑器里修改 <code>name</code>、<code>age</code>、<code>goal</code>，<strong>保存</strong>后再运行一次，观察终端输出变化。</li>
+  </ol>
+
+  <h2>5. 列表与字典</h2>
+  <ol class="steps">
+    <li>运行：<code>python 02_list_and_dict.py</code></li>
+    <li>修改 <code>skills</code> 列表与 <code>task</code> 字典里的 <code>status</code> / <code>progress</code> / <code>message</code>，保存后再运行。</li>
+  </ol>
+
+  <h2>6. 判断与循环</h2>
+  <ol class="steps">
+    <li>运行：<code>python 03_if_and_loop.py</code></li>
+    <li>修改 <code>score</code> 或 <code>status</code>、以及 <code>items</code> 列表文字，保存后再运行，看 <code>if</code> 分支与 <code>for</code> 输出如何变化。</li>
+  </ol>
+
+  <h2>7. 简单函数</h2>
+  <ol class="steps">
+    <li>运行：<code>python 04_function.py</code></li>
+    <li>修改传给函数的 <code>student</code>、<code>next_task</code>（或按文件内注释微调返回文字），保存后再运行。</li>
+  </ol>
+
+  <h2>8. 填写学习笔记</h2>
+  <p>打开 <code>notes/task-note.txt</code>，在每一行提示后写<strong>你自己的话</strong>（不必很长），保存。</p>
+
+  <h2>9. 对照 checklist 自检</h2>
+  <p>在本关根目录（<code>starter</code> 的上一级再上一级）打开 <code>checklist.md</code>：路径为 <code>levels/04-python-basics/checklist.md</code>。若你只有练习包 ZIP，可向负责人索取同级的 <code>checklist.md</code>，或使用整仓材料对照。</p>
+
+  <div class="ok">
+    <strong>建议提交物：</strong>终端运行截图、修改后的 Python 文件截图、<code>notes/task-note.txt</code> 截图、再加一句话总结。
+  </div>
+
+  <p style="margin-top:2rem;font-size:0.9rem;color:#64748b;">完成后可在在线训练营进入<strong>第 05 关：HTTP / URL / 浏览器请求</strong>（规划中）。</p>
+</body>
+</html>
