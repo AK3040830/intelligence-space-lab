@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>第 05 关练习包 · 从这里开始</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 2.5rem;
+      line-height: 1.75;
+      color: #1e293b;
+      background: #fafafa;
+    }
+    h1 { font-size: 1.3rem; margin: 0 0 0.5rem; color: #1d4ed8; }
+    h2 { font-size: 1.05rem; margin-top: 1.45rem; color: #2563eb; }
+    code, .path {
+      background: #e2e8f0;
+      padding: 0.12rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    ol.steps { padding-left: 1.25rem; }
+    ol.steps li { margin: 0.55rem 0; }
+    .warn {
+      background: #fef3c7;
+      border-left: 4px solid #d97706;
+      padding: 0.85rem 1rem;
+      margin: 1.1rem 0;
+      font-size: 0.95rem;
+    }
+    .critical {
+      background: #fee2e2;
+      border-left: 4px solid #dc2626;
+      padding: 0.85rem 1rem;
+      margin: 1.1rem 0;
+      font-size: 0.95rem;
+    }
+    .ok {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 0.85rem 1rem;
+      margin: 1.1rem 0;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>第 05 关：本地练习（HTTP / URL / 浏览器请求）</h1>
+  <p>本关假设你会用终端 <code>cd</code>、会用编辑器打开文件夹并保存（第 01、02、04 关）。</p>
+  <p>本关<strong>不要求</strong> Git、curl、requests、安装第三方库。</p>
+
+  <div class="critical">
+    <strong>本关重点不是双击 HTML。</strong>你必须用浏览器访问
+    <strong><code>http://127.0.0.1:8005/</code></strong> 这类地址（本地 HTTP），才能体会「请求、响应、状态码」与 <code>file://</code> 的差别。
+  </div>
+
+  <div class="warn">
+    <strong>端口与命令：</strong>本关统一使用端口 <strong>8005</strong>。启动命令为
+    <code>python3 -m http.server 8005</code>。若 <code>python3</code> 不可用，Windows 可试
+    <code>py -m http.server 8005</code> 或 <code>python -m http.server 8005</code>。
+  </div>
+
+  <h2>1. 打开 starter 文件夹</h2>
+  <p>确认你在本关的 <span class="path">starter</span> 目录中（ZIP 解压后为 <code>level-05-http-url-browser-starter/</code>，或整仓路径 <code>levels/05-http-url-browser/practice/starter/</code>）。应能看到 <code>index.html</code>、<code>data.json</code> 等。</p>
+
+  <h2>2. 用编辑器打开整个 starter 文件夹</h2>
+  <p>在 VS Code / Cursor 中选「打开文件夹」，选中整个 <code>starter</code>，左侧应列出本关文件。</p>
+
+  <h2>3. 打开终端并进入 starter</h2>
+  <p>在终端里 <code>cd</code> 到本文件夹（与 <code>START_HERE.html</code> 同级）。</p>
+
+  <h2>4. 启动本地 HTTP 服务</h2>
+  <ol class="steps">
+    <li>执行：<code>python3 -m http.server 8005</code></li>
+    <li>终端里应出现 “Serving HTTP on … port 8005” 一类提示。</li>
+    <li><strong>保持该终端窗口不要关</strong>（关掉就等于停止服务）。</li>
+  </ol>
+
+  <h2>5～8. 用浏览器访问（新开浏览器标签即可）</h2>
+  <ol class="steps" start="5">
+    <li>打开 <code>http://127.0.0.1:8005/</code>（应看到首页 <code>index.html</code>）。</li>
+    <li>打开 <code>http://127.0.0.1:8005/hello.html</code>。</li>
+    <li>打开 <code>http://127.0.0.1:8005/data.json</code>。</li>
+    <li>打开 <code>http://127.0.0.1:8005/not-exist.html</code>，观察 <strong>404</strong> 或「未找到」提示；并阅读 <code>missing-page-note.txt</code>。</li>
+  </ol>
+
+  <h2>9～10. 修改文件并刷新</h2>
+  <ol class="steps" start="9">
+    <li>在编辑器中修改 <code>index.html</code> 的标题或说明文字，保存，回到浏览器 <strong>刷新</strong> 首页。</li>
+    <li>修改 <code>data.json</code> 里的 <code>message</code> 或 <code>items</code> 里一个词，保存，刷新 <code>data.json</code> 页面。</li>
+  </ol>
+
+  <h2>11. 填写 notes/task-note.txt</h2>
+  <p>打开 <code>notes/task-note.txt</code>，在提示后写简短自己的话，保存。</p>
+
+  <h2>12. 对照 checklist.md 自检</h2>
+  <p>本关根目录（与 <code>practice</code> 同级）有 <code>checklist.md</code>。若只有 ZIP，可向负责人索取或与整仓材料对照。</p>
+
+  <div class="ok">
+    <strong>建议提交物：</strong>终端里 http.server 截图、访问首页与 data.json 截图、404 截图、<code>notes/task-note.txt</code> 截图。
+  </div>
+
+  <p style="margin-top:2rem;font-size:0.9rem;color:#64748b;">完成后可在在线训练营继续 <strong>第 06 关：JSON / API / curl / requests</strong>（规划中）。</p>
+</body>
+</html>

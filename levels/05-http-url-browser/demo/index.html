@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intelligence Space Lab - 第 05 关</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --card: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --accent-dim: #dbeafe;
+      --border: #e2e8f0;
+      --ok: #15803d;
+      --bad: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+    h1 { font-size: 1.4rem; margin: 0 0 0.5rem; }
+    .lead { color: var(--muted); margin: 0 0 1.5rem; font-size: 0.95rem; }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 560px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .concept-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      text-align: left;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .concept-card:hover, .concept-card:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.12);
+    }
+    .concept-card h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+      color: var(--accent);
+    }
+    .concept-card .hint { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    .concept-card .detail {
+      display: none;
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.9rem;
+    }
+    .concept-card.open .detail { display: block; }
+    .concept-card.open { border-color: var(--accent); }
+    .detail p { margin: 0.4rem 0; }
+    .detail code { background: #f1f5f9; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.88em; }
+    .detail .tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: #1e40af;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      margin-top: 0.35rem;
+    }
+    .quiz-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .quiz-box h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+    .q { margin: 1rem 0 0.35rem; font-weight: 600; font-size: 0.95rem; }
+    .opts label {
+      display: block;
+      padding: 0.45rem 0.6rem;
+      margin: 0.35rem 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .opts label:hover { background: #f8fafc; }
+    .btn {
+      display: inline-block;
+      padding: 0.55rem 1rem;
+      margin-top: 0.35rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .fb { margin-top: 0.45rem; font-size: 0.88rem; min-height: 1.2em; }
+    .fb.ok { color: var(--ok); }
+    .fb.bad { color: var(--bad); }
+    .download-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .btn-link {
+      display: inline-block;
+      padding: 0.65rem 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .note { font-size: 0.88rem; color: var(--muted); margin: 0.75rem 0 0; }
+    .done-box {
+      background: #eff6ff;
+      border: 1px solid #93c5fd;
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .done-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .done-box ul { margin: 0.35rem 0 0; padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Intelligence Space Lab - 第 05 关</h1>
+    <p class="lead">
+      建立 <strong>URL</strong>、<strong>HTTP 请求/响应</strong>、<strong>状态码</strong> 的第一直觉；并用
+      <strong>Python <code>http.server</code></strong> 在本地访问 HTML 与 JSON。
+      本页小测<strong>不发起真实网络请求</strong>；动手在练习包。不教 curl、requests、Django、API 开发。
+    </p>
+
+    <div class="grid" id="cards">
+      <button type="button" class="concept-card" data-card="0" aria-expanded="false">
+        <h2>1. 浏览器输入网址后发生了什么</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>你在地址栏输入或点击链接时，浏览器会向某个主机上的某个端口发起一次 <strong>HTTP 请求</strong>；服务器返回 <strong>响应</strong>（含状态码与内容）。</p>
+          <p><span class="tag">本关</span> 用 <code>python3 -m http.server</code> 扮演「最小服务器」，只提供静态文件。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="1" aria-expanded="false">
+        <h2>2. URL 的组成</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>常见 URL 形如：<code>http://127.0.0.1:8005/hello.html?q=1</code></p>
+          <p><strong>协议</strong> <code>http://</code> · <strong>主机</strong> <code>127.0.0.1</code>（本机回环）· <strong>端口</strong> <code>8005</code> · <strong>路径</strong> <code>/hello.html</code> · <strong>查询参数</strong> <code>?q=1</code>（可选）。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="2" aria-expanded="false">
+        <h2>3. file:// 和 http:// 的区别</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>file://</strong>：浏览器直接读磁盘上的文件，没有「本关这种最小 HTTP 服务」参与。</p>
+          <p><strong>http://</strong>：浏览器向某端口上的程序要资源，程序按 HTTP 规则返回响应（可有 404 等状态码）。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="3" aria-expanded="false">
+        <h2>4. HTTP 请求与响应</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p><strong>请求</strong>：浏览器说「我要哪个路径的资源」。</p>
+          <p><strong>响应</strong>：服务器说「状态如何 + 正文是什么」（例如 HTML 文本或 JSON 文本）。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="4" aria-expanded="false">
+        <h2>5. GET 请求和状态码</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>在地址栏直接打开链接，多数是 <strong>GET</strong>（获取资源）。</p>
+          <p><strong>200</strong> 常表示成功找到并返回；<strong>404</strong> 常表示找不到对应路径/文件。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="5" aria-expanded="false">
+        <h2>6. HTML 响应与 JSON 响应</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>响应「正文」可以是 HTML 页面，也可以是 JSON 数据文件；浏览器都会显示，只是呈现方式不同。</p>
+          <p><span class="tag">本关</span> 用静态文件模拟两种常见响应体。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="6" aria-expanded="false">
+        <h2>7. 在线小测说明</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>下面四题均为选择题，巩固端口、404、响应类型与 file/http 差异。</p>
+        </div>
+      </button>
+
+      <button type="button" class="concept-card" data-card="7" aria-expanded="false">
+        <h2>8. 本关总结与本地实践入口</h2>
+        <p class="hint">点一下展开</p>
+        <div class="detail">
+          <p>下载练习包，阅读 <code>START_HERE.html</code>，在 <code>starter</code> 里启动 <code>http.server 8005</code>，用 <code>http://127.0.0.1:8005/</code> 访问页面与 JSON。</p>
+        </div>
+      </button>
+    </div>
+
+    <div class="quiz-box">
+      <h3>在线小测</h3>
+
+      <div class="q">Q1：<code>http://127.0.0.1:8005/index.html</code> 里，<strong>8005</strong> 是什么？</div>
+      <div class="opts">
+        <label><input type="radio" name="q1" value="A" /> A. 端口号（服务监听的门牌）</label>
+        <label><input type="radio" name="q1" value="B" /> B. 用户名</label>
+        <label><input type="radio" name="q1" value="C" /> C. 文件大小</label>
+      </div>
+      <button type="button" class="btn" data-check="q1">检查 Q1</button>
+      <p class="fb" id="fb1"></p>
+
+      <div class="q">Q2：状态码 <strong>404</strong> 通常表示什么？</div>
+      <div class="opts">
+        <label><input type="radio" name="q2" value="A" /> A. 请求成功且内容为空</label>
+        <label><input type="radio" name="q2" value="B" /> B. 未找到请求的资源（路径/文件不存在等）</label>
+        <label><input type="radio" name="q2" value="C" /> C. 必须付费才能访问</label>
+      </div>
+      <button type="button" class="btn" data-check="q2">检查 Q2</button>
+      <p class="fb" id="fb2"></p>
+
+      <div class="q">Q3：<strong>HTML</strong> 和 <strong>JSON</strong> 都可以作为 HTTP 响应的内容吗？</div>
+      <div class="opts">
+        <label><input type="radio" name="q3" value="A" /> A. 可以，取决于服务器返回什么正文</label>
+        <label><input type="radio" name="q3" value="B" /> B. 不可以，HTTP 只能返回图片</label>
+        <label><input type="radio" name="q3" value="C" /> C. 只能返回 HTML，不能返回 JSON</label>
+      </div>
+      <button type="button" class="btn" data-check="q3">检查 Q3</button>
+      <p class="fb" id="fb3"></p>
+
+      <div class="q">Q4：<strong>file://</strong> 与 <strong>http://</strong> 打开同一 HTML 文件时，主要差别是什么？</div>
+      <div class="opts">
+        <label><input type="radio" name="q4" value="A" /> A. 没有差别，完全一样</label>
+        <label><input type="radio" name="q4" value="B" /> B. file 直接读本地文件；http 通过「监听端口的服务程序」按 HTTP 返回资源</label>
+        <label><input type="radio" name="q4" value="C" /> C. file 更快，所以生产环境都用 file</label>
+      </div>
+      <button type="button" class="btn" data-check="q4">检查 Q4</button>
+      <p class="fb" id="fb4"></p>
+    </div>
+
+    <div class="download-box">
+      <h3>下载本关练习包</h3>
+      <p style="margin: 0 0 0.75rem; font-size: 0.92rem;">
+        整仓学习时可打开
+        <code>levels/05-http-url-browser/practice/starter/START_HERE.html</code>。
+      </p>
+      <a class="btn-link" href="../practice/package.zip" download>下载 package.zip</a>
+      <p class="note">解压后顶层目录为 <code>level-05-http-url-browser-starter/</code>。</p>
+    </div>
+
+    <div class="done-box">
+      <h3>接下来</h3>
+      <ul>
+        <li>按 <code>START_HERE.html</code> 启动 <code>http.server</code> 并完成访问与修改；</li>
+        <li>对照 <code>checklist.md</code> 提交截图与总结。</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".concept-card").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var open = el.classList.toggle("open");
+        el.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    });
+    var answers = { q1: "A", q2: "B", q3: "A", q4: "B" };
+    var fbIds = { q1: "fb1", q2: "fb2", q3: "fb3", q4: "fb4" };
+    document.querySelectorAll("[data-check]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.getAttribute("data-check");
+        var sel = document.querySelector('input[name="' + id + '"]:checked');
+        var fb = document.getElementById(fbIds[id]);
+        if (!sel) {
+          fb.className = "fb bad";
+          fb.textContent = "请先选一个选项。";
+          return;
+        }
+        var ok = sel.value === answers[id];
+        fb.className = "fb " + (ok ? "ok" : "bad");
+        fb.textContent = ok ? "正确。" : "再想想看卡片里的说明。";
+      });
+    });
+  </script>
+</body>
+</html>

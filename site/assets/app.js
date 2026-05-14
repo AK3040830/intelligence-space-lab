@@ -1350,7 +1350,7 @@
               title: "下一步怎么做",
               items: [
                 "完成 **`START_HERE.html`** 与 **`checklist.md`** 中的动手与自检。",
-                "然后进入 **第 05 关：HTTP / URL / 浏览器请求**（见课程播放器「后续关卡」预告）。",
+                "然后进入 **第 05 关：HTTP / URL / 浏览器请求**（已在课程播放器中开放）。",
               ],
             },
             {
@@ -1372,11 +1372,269 @@
         },
       ],
     },
+    {
+      id: "05",
+      title: "第 05 关：HTTP / URL / 浏览器请求",
+      cardTutorialUrl: "../levels/05-http-url-browser/demo/index.html",
+      startHereUrl: "../levels/05-http-url-browser/practice/starter/START_HERE.html",
+      packageZipUrl: "../levels/05-http-url-browser/practice/package.zip",
+      sections: [
+        {
+          navTitle: "01 浏览器里发生了什么",
+          title: "浏览器输入网址后发生了什么",
+          oneLiner: "地址栏或链接会触发一次 HTTP 请求；服务器返回响应（状态码 + 内容）。",
+          whyLearn: "后面学 API、框架时，全都站在「请求—响应」之上；先把画面建立起来。",
+          paragraphs: [
+            "你在地址栏回车或点击超链接时，浏览器会向 **主机:端口** 发起请求，并等待对方返回。",
+            "本关用 **`python3 -m http.server`** 在本机起一个**最小静态服务**，你能在 Network 之外先用肉眼看到 **200 / 404** 与页面变化。",
+          ],
+          myth: "误区：以为双击 `file://` 与 `http://127.0.0.1:8005/` 没区别。正解：后者才走本关要练的 HTTP 流程。",
+          nextStep: "下一节：拆解 URL。",
+          exercise: {
+            type: "choice",
+            title: "更贴近本关描述的是？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 浏览器向某端口上的程序请求资源，并收到 HTTP 响应" },
+              { value: "B", label: "B. 浏览器会自动把 HTML 编译成 Python" },
+              { value: "C", label: "C. 地址栏只用于收藏图片" },
+            ],
+            correct: "A",
+            okText: "对。请求与响应是本关的主线。",
+            badText: "再想想：地址栏与链接触发的是网络语义上的「要资源」。",
+          },
+        },
+        {
+          navTitle: "02 URL 的组成",
+          title: "URL：协议、主机、端口、路径、查询参数",
+          oneLiner: "把地址条读成「怎么连、连谁、要哪份文件」。",
+          whyLearn: "读不懂 URL，就无法自查「是不是端口错了」「路径写错成 404」。",
+          paragraphs: [
+            "示例：**`http://127.0.0.1:8005/hello.html?from=demo`**",
+            "**协议** `http://` · **主机** `127.0.0.1`（本机）· **端口** `8005` · **路径** `/hello.html` · **查询串** `?from=demo`（可选）。",
+          ],
+          example: {
+            label: "拆一拆",
+            text: "端口像「楼号门牌」：同一台电脑可跑多个服务，靠不同端口区分。",
+          },
+          myth: "误区：以为路径里可以随便省略开头的 `/`。正解：路径从 `/` 开始写清，少写可能变成另一条资源。",
+          nextStep: "下一节：file 与 http。",
+          exercise: {
+            type: "choice",
+            title: "在 `http://127.0.0.1:8005/data.json` 中，`/data.json` 更常被称为？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 路径（要哪份资源）" },
+              { value: "B", label: "B. Python 虚拟环境名" },
+              { value: "C", label: "C. 数据库密码" },
+            ],
+            correct: "A",
+            okText: "对。路径告诉服务器你要哪一个文件或路由。",
+            badText: "再对照 URL 五段：协议、主机、端口、路径、查询参数。",
+          },
+        },
+        {
+          navTitle: "03 file 与 http",
+          title: "file:// 和 http:// 有什么区别",
+          oneLiner: "`file` 直读磁盘；`http` 走端口上的服务程序。",
+          whyLearn: "很多新人只会 `file://` 看页面，后面学接口与跨域会吃亏。",
+          paragraphs: [
+            "**file://** 适合快速预览静态文件，但**没有**本关这种「服务器返回状态码」的体验。",
+            "**http://127.0.0.1:8005/** 表示连到本机 **8005** 端口上的 `http.server`，它会按 HTTP 规则返回 **200** 或 **404** 等。",
+          ],
+          myth: "误区：为了省事一直用 file 测 AJAX。正解：正式接口与本地服务都用 http 语义；本关先把 http 跑通。",
+          nextStep: "下一节：请求与响应。",
+          exercise: {
+            type: "choice",
+            title: "Q4：`file://` 与 `http://` 打开同一 HTML 时，更核心的差别是？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 没有差别" },
+              { value: "B", label: "B. file 直接读本地文件；http 通过监听端口的服务按 HTTP 返回资源" },
+              { value: "C", label: "C. file 更安全，所以生产环境都用 file" },
+            ],
+            correct: "B",
+            okText: "对。本关练习重点在 http。",
+            badText: "再想想：谁在监听端口、谁返回状态码？",
+          },
+        },
+        {
+          navTitle: "04 HTTP 请求与响应",
+          title: "HTTP 请求与响应",
+          oneLiner: "请求：我要什么；响应：结果如何 + 正文是什么。",
+          whyLearn: "所有接口调试，最后都落回这两件事。",
+          paragraphs: [
+            "**请求**里常见方法之一是 **GET**（获取资源），在浏览器地址栏打开页面多数是 GET。",
+            "**响应**里你会看到 **状态码**（如 200、404）以及 **响应体**（HTML 文本、JSON 文本等）。",
+          ],
+          example: {
+            label: "极简心智图",
+            text: "浏览器 →（请求）→ http.server →（响应：状态码 + 文件内容）→ 浏览器",
+          },
+          myth: "误区：把「响应体」当成「状态码」。正解：状态码是摘要；正文另有一块。",
+          nextStep: "下一节：GET 与状态码。",
+          exercise: {
+            type: "choice",
+            title: "下面哪一句更贴近「HTTP 响应」？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 服务器返回状态码，并附上正文内容（如 HTML / JSON）" },
+              { value: "B", label: "B. 响应只包含壁纸图片，不包含文字" },
+              { value: "C", label: "C. 响应是编辑器的自动保存功能" },
+            ],
+            correct: "A",
+            okText: "对。响应 = 状态信息 + 内容（本关为静态文件）。",
+            badText: "再想想状态码与正文的分工。",
+          },
+        },
+        {
+          navTitle: "05 GET 与状态码",
+          title: "GET 请求和状态码 200 / 404",
+          oneLiner: "GET 常表示「取资源」；200 多表示成功；404 多表示未找到。",
+          whyLearn: "看 Network 或排错时，最先扫的就是状态码。",
+          paragraphs: [
+            "在地址栏访问 **`/hello.html`**，若文件存在，`http.server` 通常返回 **200**。",
+            "访问不存在的路径（本关练习 **`not-exist.html`**），通常返回 **404**。",
+          ],
+          myth: "误区：把 404 当成「电脑中毒」。正解：多数是路径或文件名写错，或服务根目录不对。",
+          nextStep: "下一节：HTML 与 JSON 响应。",
+          exercise: {
+            type: "choice",
+            title: "Q2：状态码 404 通常表示什么？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 一定需要重启路由器" },
+              { value: "B", label: "B. 未找到请求的资源（例如文件不存在）" },
+              { value: "C", label: "C. 请求已成功且正文必为 JSON" },
+            ],
+            correct: "B",
+            okText: "对。本关用故意缺失的文件练习 404。",
+            badText: "再想想：404 与「找不到」的对应关系。",
+          },
+        },
+        {
+          navTitle: "06 HTML 与 JSON 响应",
+          title: "HTML 响应与 JSON 响应",
+          oneLiner: "同一种 HTTP 机制，可以返回不同格式的正文。",
+          whyLearn: "后端接口常返回 JSON；页面骨架常是 HTML；不要混成两种协议。",
+          paragraphs: [
+            "**HTML** 响应：浏览器擅长渲染成网页。",
+            "**JSON** 响应：本质是文本数据，浏览器也会显示；后续第 06 关会把它与 API 串起来。",
+          ],
+          myth: "误区：以为返回 JSON 必须用 Django。正解：静态 `data.json` 也能作为响应体练习阅读。",
+          nextStep: "下一节：在线小测。",
+          exercise: {
+            type: "choice",
+            title: "Q3：HTML 和 JSON 都可以作为 HTTP 响应的内容吗？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 可以，取决于服务器返回的正文类型与内容" },
+              { value: "B", label: "B. 不可以，HTTP 只能返回视频" },
+              { value: "C", label: "C. 只能返回 HTML" },
+            ],
+            correct: "A",
+            okText: "对。本关 `hello.html` 与 `data.json` 都是响应体示例。",
+            badText: "再想想：响应体是「载体」，格式可以多种。",
+          },
+        },
+        {
+          navTitle: "07 在线小测",
+          title: "在线小测：端口与 URL",
+          oneLiner: "巩固：端口含义与本关命令。",
+          whyLearn: "端口与路径是新人最高频写错的两处。",
+          paragraphs: [
+            "本页练习不发起外网请求；**真正访问**请在练习包运行 **`python3 -m http.server 8005`** 后，用浏览器打开 **`http://127.0.0.1:8005/`**。",
+          ],
+          myth: "",
+          nextStep: "下一节：本关总结与实践入口。",
+          exercise: {
+            type: "choice",
+            title: "Q1：在 `http://127.0.0.1:8005/index.html` 里，8005 是什么？",
+            desc: "",
+            options: [
+              { value: "A", label: "A. 端口号" },
+              { value: "B", label: "B. 文件名字节数" },
+              { value: "C", label: "C. HTTP 版本号" },
+            ],
+            correct: "A",
+            okText: "对。端口区分同一主机上的不同服务。",
+            badText: "再对照 URL：主机后面的 `:数字` 多为端口。",
+          },
+        },
+        {
+          navTitle: "08 本关总结与实践",
+          title: "本关总结 + 本地实践入口",
+          oneLiner: "用 http.server 跑通 200 与 404，并区分 HTML / JSON 响应。",
+          whyLearn: "为第 06 关 curl / requests / API 打地基；本关不教正式 API。",
+          paragraphs: [
+            "以下总结对应在线读完的各节；**真正启动 HTTP 服务** 在 **`practice/starter/`** 完成。**只双击 HTML 不算本关重点**：请用 **`http://127.0.0.1:8005/`** 访问。",
+          ],
+          summaryPanels: [
+            {
+              type: "checklist",
+              title: "本关你学会了什么",
+              items: [
+                "**URL** 由协议、主机、端口、路径、查询参数等组成。",
+                "**浏览器地址栏** 会触发 **HTTP 请求**（本关多为 **GET**）。",
+                "**file://** 与 **http://** 的使用场景不同；本关重点在 **http**。**`http.server`** 可在本地提供静态文件。",
+                "**HTTP 响应** 含 **状态码**（如 **200**、**404**）与 **响应体**（如 **HTML**、**JSON**）。",
+                "**本关不是正式 API 开发课**；curl、requests、API 细节见 **第 06 关**。",
+              ],
+            },
+            {
+              type: "tags",
+              title: "关键概念",
+              tags: ["URL", "端口", "路径", "GET", "请求", "响应", "200", "404", "HTML", "JSON", "http.server"],
+            },
+            {
+              type: "checklist",
+              title: "你现在应该能做什么",
+              items: [
+                "在 **`starter`** 运行 **`python3 -m http.server 8005`**（或 `py` / `python` 等价命令）。",
+                "能用浏览器访问 **`/`**、**`/hello.html`**、**`/data.json`**，并访问不存在路径观察 **404**。",
+                "能修改 **`index.html`** 或 **`data.json`** 后 **刷新** 验证，并填写 **`notes/task-note.txt`**。",
+              ],
+            },
+            {
+              type: "calloutMuted",
+              title: "常见错误回顾",
+              items: [
+                "服务 **没启动** 或 **端口写错** → 浏览器无法连接；先确认终端仍在监听 **8005**。",
+                "在 **错误目录** 启动 `http.server` → 根路径文件不对；务必 `cd` 到 **`starter`**。",
+                "改完 **没保存** 就刷新 → 先保存再刷新。",
+              ],
+            },
+            {
+              type: "next",
+              title: "下一步怎么做",
+              items: [
+                "完成 **`START_HERE.html`** 与 **`checklist.md`** 中的步骤与自检。",
+                "然后进入 **第 06 关：JSON / API / curl / requests**（见课程播放器「后续关卡」预告）。",
+              ],
+            },
+            {
+              type: "practice",
+              title: "本地实践入口",
+              lines: [
+                "阅读 **`START_HERE.html`**：启动 **`http.server 8005`**，用 **`http://127.0.0.1:8005/`** 访问首页、**`hello.html`**、**`data.json`**，并访问 **`not-exist.html`** 观察 **404**。",
+                "需要压缩包时优先 **本关 `package.zip`**；若暂时无法下载，请用 **整仓 ZIP** 进入本关 **`practice/starter/`**。",
+              ],
+              note: "解压后顶层目录为 **`level-05-http-url-browser-starter/`**，详见下方蓝色提示框。",
+            },
+          ],
+          myth: "",
+          nextStep: "",
+          exercise: {
+            type: "none",
+            hint: "本节无在线题。动手请使用上方「本地实践入口」或底部「打开 START_HERE」「下载本关练习包」。",
+          },
+        },
+      ],
+    },
   ];
 
   /** 与仓库 `levels/` 规划一致；仅侧边栏预告，非可播放课程 */
   var PLANNED_ROADMAP = [
-    "第 05 关：HTTP / URL / 浏览器请求",
     "第 06 关：JSON / API / curl / requests",
     "第 07 关：Vue 前端基础",
     "第 08 关：Django 后端基础",
@@ -1630,6 +1888,7 @@
       "02": "level-02-editor-and-files-starter",
       "03": "level-03-html-css-js-starter",
       "04": "level-04-python-basics-starter",
+      "05": "level-05-http-url-browser-starter",
     };
     var folder = folderMap[c.id] || "level-starter";
     return (
