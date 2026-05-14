@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build level-00–04 practice package zips (stdlib only)."""
+"""Build level-00–05 practice package zips (stdlib only)."""
 
 import zipfile
 from pathlib import Path
@@ -31,6 +31,11 @@ PACKAGES = [
         ROOT / "levels/04-python-basics/practice/starter",
         "level-04-python-basics-starter",
         ROOT / "levels/04-python-basics/practice/package.zip",
+    ),
+    (
+        ROOT / "levels/05-http-url-browser/practice/starter",
+        "level-05-http-url-browser-starter",
+        ROOT / "levels/05-http-url-browser/practice/package.zip",
     ),
 ]
 

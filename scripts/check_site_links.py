@@ -26,6 +26,9 @@ REQUIRED = [
     "levels/04-python-basics/demo/index.html",
     "levels/04-python-basics/practice/starter/START_HERE.html",
     "levels/04-python-basics/practice/package.zip",
+    "levels/05-http-url-browser/demo/index.html",
+    "levels/05-http-url-browser/practice/starter/START_HERE.html",
+    "levels/05-http-url-browser/practice/package.zip",
 ]
 
 

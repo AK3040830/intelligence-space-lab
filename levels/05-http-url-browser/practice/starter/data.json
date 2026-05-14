@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "type": "demo-response",
+  "message": "这是一个 JSON 响应示例",
+  "items": ["html", "json", "http"]
+}
